@@ -286,3 +286,9 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+*.aeproperties
+*.Generated.cs
+*.csvSettings
+HandballWars/HandballWars/bin/
+HandballWars/HandballWars/obj/
+HandballWars/HandballWarsContent/obj/
