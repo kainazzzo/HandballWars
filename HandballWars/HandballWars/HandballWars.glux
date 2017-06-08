@@ -2,21 +2,50 @@
 <GlueProjectSave xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <In2D>true</In2D>
   <RunFullscreen>false</RunFullscreen>
-  <SetResolution>false</SetResolution>
-  <ResolutionWidth>800</ResolutionWidth>
-  <ResolutionHeight>600</ResolutionHeight>
-  <SetOrthogonalResolution>false</SetOrthogonalResolution>
-  <OrthogonalWidth>800</OrthogonalWidth>
-  <OrthogonalHeight>600</OrthogonalHeight>
-  <Screens />
+  <SetResolution>true</SetResolution>
+  <ResolutionWidth>1920</ResolutionWidth>
+  <ResolutionHeight>1080</ResolutionHeight>
+  <SetOrthogonalResolution>true</SetOrthogonalResolution>
+  <OrthogonalWidth>480</OrthogonalWidth>
+  <OrthogonalHeight>270</OrthogonalHeight>
+  <Screens>
+    <ScreenSave>
+      <Tags>
+        <string>GLUE</string>
+      </Tags>
+      <Source>GLUE</Source>
+      <Name>Screens\GameScreen</Name>
+    </ScreenSave>
+    <ScreenSave>
+      <Tags>
+        <string>GLUE</string>
+      </Tags>
+      <Source>GLUE</Source>
+      <Name>Screens\MainMenu</Name>
+    </ScreenSave>
+  </Screens>
   <Entities />
-  <GlobalFiles />
+  <GlobalFiles>
+    <ReferencedFileSave>
+      <Name>GumProject/GumProject.gumx</Name>
+      <IsSharedStatic>true</IsSharedStatic>
+      <HasPublicProperty>true</HasPublicProperty>
+      <ProjectsToExcludeFrom />
+    </ReferencedFileSave>
+  </GlobalFiles>
   <GlobalContentSettingsSave>
     <LoadAsynchronously>false</LoadAsynchronously>
     <RecordLockContention>false</RecordLockContention>
   </GlobalContentSettingsSave>
   <SyncedProjects />
-  <ResolutionPresets />
+  <StartUpScreen>Screens\MainMenu</StartUpScreen>
+  <ResolutionPresets>
+    <ResolutionValues>
+      <Name>1080p</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+    </ResolutionValues>
+  </ResolutionPresets>
   <PerformanceSettingsSave>
     <ThrowExceptionOnPostInitializeContentLoad>false</ThrowExceptionOnPostInitializeContentLoad>
     <RecordInitializeSegments>false</RecordInitializeSegments>
@@ -53,4 +82,19 @@
   <PluginData>
     <RequiredPlugins />
   </PluginData>
+  <DisplaySettings>
+    <Is2D>true</Is2D>
+    <GenerateDisplayCode>true</GenerateDisplayCode>
+    <ResolutionWidth>480</ResolutionWidth>
+    <ResolutionHeight>270</ResolutionHeight>
+    <FixedAspectRatio>true</FixedAspectRatio>
+    <AspectRatioWidth>16</AspectRatioWidth>
+    <AspectRatioHeight>9</AspectRatioHeight>
+    <SupportLandscape>true</SupportLandscape>
+    <SupportPortrait>false</SupportPortrait>
+    <RunInFullScreen>false</RunInFullScreen>
+    <AllowWindowResizing>false</AllowWindowResizing>
+    <Scale>200</Scale>
+    <ResizeBehavior>IncreaseVisibleArea</ResizeBehavior>
+  </DisplaySettings>
 </GlueProjectSave>

@@ -56,7 +56,7 @@ namespace HandballWars
 
 			CameraSetup.SetupCamera(SpriteManager.Camera, graphics);
 			GlobalContent.Initialize();
-            //ScreenManager.Start(typeof(SomeScreen).FullName);
+			FlatRedBall.Screens.ScreenManager.Start(typeof(HandballWars.Screens.MainMenu));
 
             base.Initialize();
         }
