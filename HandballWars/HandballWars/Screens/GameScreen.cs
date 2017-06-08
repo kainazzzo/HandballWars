@@ -21,8 +21,9 @@ namespace HandballWars.Screens
 
 		void CustomInitialize()
 		{
-
-
+            Camera.Main.X += Camera.Main.OrthogonalWidth / 2.0f;
+            Camera.Main.Y -= Camera.Main.OrthogonalHeight / 2.0f;
+            FlatRedBallServices.GraphicsOptions.TextureFilter = Microsoft.Xna.Framework.Graphics.TextureFilter.Point;
 		}
 
 		void CustomActivity(bool firstTimeCalled)

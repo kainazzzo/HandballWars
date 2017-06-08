@@ -9,12 +9,12 @@
 			internal static void ResetCamera (Camera cameraToReset)
 			{
 				FlatRedBall.Camera.Main.Orthogonal = true;
-				FlatRedBall.Camera.Main.OrthogonalHeight = 270;
-				FlatRedBall.Camera.Main.OrthogonalWidth = 480;
+				FlatRedBall.Camera.Main.OrthogonalHeight = 405;
+				FlatRedBall.Camera.Main.OrthogonalWidth = 720;
 				FlatRedBall.Camera.Main.FixAspectRatioYConstant();
 				SetAspectRatioTo(16 / 9m);
 			}
-			internal static void SetupCamera (Camera cameraToSetUp, Microsoft.Xna.Framework.GraphicsDeviceManager graphicsDeviceManager, int width = 480, int height = 270)
+			internal static void SetupCamera (Camera cameraToSetUp, Microsoft.Xna.Framework.GraphicsDeviceManager graphicsDeviceManager, int width = 720, int height = 405)
 			{
 				#if WINDOWS || DESKTOP_GL
 				FlatRedBall.FlatRedBallServices.Game.Window.AllowUserResizing = false;
