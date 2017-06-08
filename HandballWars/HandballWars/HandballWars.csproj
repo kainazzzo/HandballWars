@@ -262,6 +262,7 @@
     <Compile Include="TileGraphics\TiledMapSave.Conversion.cs" />
     <Compile Include="TileGraphics\TiledMapSave.Serialization.cs" />
     <Compile Include="TileGraphics\TiledMapToShapeCollectionConverter.cs" />
+    <Compile Include="TileGraphics\TileNodeNetworkCreator.cs" />
     <Compile Include="TileGraphics\Tileset.cs" />
     <Compile Include="TileGraphics\TilesetExtensionMethods.cs" />
   </ItemGroup>

@@ -15,6 +15,14 @@
       </Tags>
       <Source>GLUE</Source>
       <Name>Screens\GameScreen</Name>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Screens/GameScreen/BasicArena.tmx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.TileGraphics.LayeredTileMap</RuntimeType>
+          <ProjectsToExcludeFrom />
+        </ReferencedFileSave>
+      </ReferencedFiles>
     </ScreenSave>
     <ScreenSave>
       <Tags>
@@ -80,7 +88,12 @@
   <ApplyToFixedResolutionPlatforms>true</ApplyToFixedResolutionPlatforms>
   <ExternallyBuiltFileDirectory>../../</ExternallyBuiltFileDirectory>
   <PluginData>
-    <RequiredPlugins />
+    <RequiredPlugins>
+      <string>Animation Editor</string>
+      <string>Gum Plugin</string>
+      <string>Tiled Plugin</string>
+      <string>State Interpolation Plugin</string>
+    </RequiredPlugins>
   </PluginData>
   <DisplaySettings>
     <Is2D>true</Is2D>

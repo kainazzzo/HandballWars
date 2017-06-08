@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0.0" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" source="platformertileset.tsx"/>
+ <layer name="Layer1" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3SzQoAEBCFUUSeHK+NhY0I+dt8p+5iSu5iRggAAAAAQOFS/CDhcKc8/N8q9bn/JVPNtvGmtw+92T1zW7eSbzYCaJE1bQAQAAA=
+  </data>
+ </layer>
+</map>

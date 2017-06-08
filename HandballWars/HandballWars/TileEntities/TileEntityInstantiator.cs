@@ -13,19 +13,71 @@ namespace FlatRedBall.TileEntities
 {
     public static class TileEntityInstantiator
     {
+
+        /// <summary>
+        /// Creates entities from a single layer for any tile with the EntityToCreate property.
+        /// </summary>
+        /// <param name="mapLayer">The layer to create entities from.</param>
+        /// <param name="layeredTileMap">The map which contains the mapLayer instance.</param>
+        public static void CreateEntitiesFrom(MapDrawableBatch mapLayer, LayeredTileMap layeredTileMap)
+        {
+            var entitiesToRemove = new List<string>();
+
+            CreateEntitiesFrom(entitiesToRemove, mapLayer, layeredTileMap.TileProperties);
+
+            foreach (var entityToRemove in entitiesToRemove)
+            {
+                string remove = entityToRemove;
+                mapLayer.RemoveTiles(t => t.Any(item => item.Name == "EntityToCreate" && item.Value as string == remove), layeredTileMap.TileProperties);
+            }
+
+        }
+
         public static void CreateEntitiesFrom(LayeredTileMap layeredTileMap)
         {
-            // prob need to clear out the tileShapeCollection
             var entitiesToRemove = new List<string>();
 
             foreach (var layer in layeredTileMap.MapLayers)
             {
-                CreateEntitiesFrom(entitiesToRemove, layer, layeredTileMap.Properties);
+                CreateEntitiesFrom(entitiesToRemove, layer, layeredTileMap.TileProperties);
             }
             foreach (var entityToRemove in entitiesToRemove)
             {
                 string remove = entityToRemove;
-                layeredTileMap.RemoveTiles(t => t.Any(item => item.Name == "EntityToCreate" && item.Value as string == remove), layeredTileMap.Properties);
+                layeredTileMap.RemoveTiles(t => t.Any(item => item.Name == "EntityToCreate" && item.Value as string == remove), layeredTileMap.TileProperties);
+            }
+            foreach (var shapeCollection in layeredTileMap.ShapeCollections)
+            {
+                var polygons = shapeCollection.Polygons;
+                for (int i = polygons.Count - 1; i > -1; i--)
+                {
+                    var polygon = polygons[i];
+                    if (!string.IsNullOrEmpty(polygon.Name) && layeredTileMap.ShapeProperties.ContainsKey(polygon.Name))
+                    {
+                        var properties = layeredTileMap.ShapeProperties[polygon.Name];
+                        var entityAddingProperty = properties.FirstOrDefault(item => item.Name == "EntityToCreate");
+
+                        var entityType = entityAddingProperty.Value as string;
+                        if (!string.IsNullOrEmpty(entityType))
+                        {
+                            IEntityFactory factory = GetFactory(entityType);
+
+                            var entity = factory.CreateNew(null) as PositionedObject;
+
+                            entity.Name = polygon.Name;
+                            ApplyPropertiesTo(entity, properties, polygon.Position);
+                            shapeCollection.Polygons.Remove(polygon);
+
+                            if (entity is Math.Geometry.ICollidable)
+                            {
+                                var entityCollision = (entity as Math.Geometry.ICollidable).Collision;
+                                entityCollision.Polygons.Add(polygon);
+                                polygon.AttachTo(entity, false);
+                            }
+
+                        }
+                    }
+                }
             }
         }
 
@@ -79,9 +131,9 @@ namespace FlatRedBall.TileEntities
 
         private static void ApplyPropertiesTo(PositionedObject entity, MapDrawableBatch layer, int tileIndex, List<NamedValue> propertiesToAssign)
         {
-
             int vertexIndex = tileIndex * 4;
-            var dimension = layer.Vertices[vertexIndex + 1].Position.X - layer.Vertices[vertexIndex].Position.X;
+            var dimension =
+                (layer.Vertices[vertexIndex + 1].Position - layer.Vertices[vertexIndex].Position).Length();
 
             float dimensionHalf = dimension / 2.0f;
 
@@ -89,12 +141,32 @@ namespace FlatRedBall.TileEntities
             float left;
             float bottom;
             layer.GetBottomLeftWorldCoordinateForOrderedTile(tileIndex, out left, out bottom);
+            Microsoft.Xna.Framework.Vector3 position = new Microsoft.Xna.Framework.Vector3(left, bottom, layer.Z);
 
+            var bottomRight = layer.Vertices[tileIndex * 4 + 1].Position;
+
+            float xDifference = bottomRight.X - left;
+            float yDifference = bottomRight.Y - bottom;
+
+            if (yDifference != 0 || xDifference < 0)
+            {
+                float angle = (float)System.Math.Atan2(yDifference, xDifference);
+
+                entity.RotationZ = angle;
+
+            }
+
+            position += entity.RotationMatrix.Right * dimensionHalf;
+            position += entity.RotationMatrix.Up * dimensionHalf;
+
+            ApplyPropertiesTo(entity, propertiesToAssign, position);
+        }
+
+        private static void ApplyPropertiesTo(PositionedObject entity, List<NamedValue> propertiesToAssign, Microsoft.Xna.Framework.Vector3 position)
+        {
             if (entity != null)
             {
-                entity.X = left + dimensionHalf;
-                entity.Y = bottom + dimensionHalf;
-                entity.Z = layer.Z;
+                entity.Position = position;
             }
 
             var entityType = entity.GetType();
@@ -102,21 +174,64 @@ namespace FlatRedBall.TileEntities
 
             foreach (var property in propertiesToAssign)
             {
-                try
+                // If name is EntityToCreate, skip it:
+                string propertyName = property.Name;
+
+                bool shouldSet = propertyName != "EntityToCreate";
+
+                if (shouldSet)
                 {
+                    if(propertyName == "name")
+                    {
+                        propertyName = "Name";
+                    }
+
                     var valueToSet = property.Value;
+                    valueToSet = SetValueAccordingToType(valueToSet, propertyName, property.Type, entityType);
+                    try
+                    {
+                        lateBinder.SetValue(entity, propertyName, valueToSet);
+                    }
+                    catch (InvalidCastException e)
+                    {
+                        string assignedType = valueToSet.GetType().ToString() ?? "unknown type";
+                        assignedType = GetFriendlyNameForType(assignedType);
 
-                    valueToSet = SetValueAccordingToType(valueToSet, property.Name, property.Type, entityType);
+                        string expectedType = "unknown type";
+                        object outValue;
+                        if (lateBinder.TryGetValue(entity, propertyName, out outValue) && outValue != null)
+                        {
+                            expectedType = outValue.GetType().ToString();
+                            expectedType = GetFriendlyNameForType(expectedType);
+                        }
 
-                    lateBinder.SetValue(entity, property.Name, valueToSet);
-                }
-                catch (Exception e)
-                {
-                    // Since this code indiscriminately tries to set properties, it may set properties which don't
-                    // actually exist. Therefore, we tolerate failures.
-
+                        // This means that the property exists but is of a different type. 
+                        string message = $"Attempted to assign the property {propertyName} " +
+                            $"to a value of type {assignedType} but expected {expectedType}. " +
+                            $"Check the property type in your TMX and make sure it matches the type on the entity.";
+                        throw new Exception(message, e);
+                    }
+                    catch (Exception e)
+                    {
+                        // Since this code indiscriminately tries to set properties, it may set properties which don't
+                        // actually exist. Therefore, we tolerate failures.
+                    }
                 }
             }
+        }
+
+
+
+
+        private static string GetFriendlyNameForType(string type)
+        {
+            switch (type)
+            {
+                case "System.String": return "string";
+                case "System.Single": return "float";
+
+            }
+            return type;
         }
 
 
@@ -174,7 +289,8 @@ namespace FlatRedBall.TileEntities
             {
 #if WINDOWS_8 || UWP
                 var assembly = typeof(TileEntityInstantiator).GetTypeInfo().Assembly;
-                typesInThisAssembly = assembly.DefinedTypes.ToArray();
+                typesInThisAssembly = assembly.DefinedTypes.Select(item=>item.AsType()).ToArray();
+
 #else
                 var assembly = Assembly.GetExecutingAssembly();
                 typesInThisAssembly = assembly.GetTypes();
@@ -184,8 +300,8 @@ namespace FlatRedBall.TileEntities
 
 #if WINDOWS_8 || UWP
             var filteredTypes =
-                types.Where(t => t.ImplementedInterfaces.Contains(typeof(IEntityFactory))
-                            && t.DeclaredConstructors.Any(c=>c.GetParameters().Count() == 0));
+                typesInThisAssembly.Where(t => t.GetInterfaces().Contains(typeof(IEntityFactory))
+                            && t.GetConstructors().Any(c=>c.GetParameters().Count() == 0));
 #else
             var filteredTypes =
                 typesInThisAssembly.Where(t => t.GetInterfaces().Contains(typeof(IEntityFactory))
@@ -197,7 +313,7 @@ namespace FlatRedBall.TileEntities
                     t =>
                     {
 #if WINDOWS_8 || UWP
-                                var propertyInfo = t.DeclaredProperties.First(item => item.Name == "Self");
+                        var propertyInfo = t.GetProperty("Self");
 #else
                         var propertyInfo = t.GetProperty("Self");
 #endif
