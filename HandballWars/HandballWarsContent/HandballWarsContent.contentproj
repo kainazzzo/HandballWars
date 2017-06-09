@@ -45,6 +45,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Entities\PlatformerCharacterBase\MovementValues.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>MovementValues</Name>
+    </None>
     <None Include="GumProject\FontCache\Font18Arial.fnt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Font18Arial</Name>

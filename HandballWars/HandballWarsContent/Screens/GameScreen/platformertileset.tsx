@@ -20,4 +20,28 @@
       <property name="HasCollision (bool)" value="True" />
     </properties>
   </tile>
+  <tile id="131">
+    <properties>
+      <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed1" />
+    </properties>
+  </tile>
+  <tile id="128">
+    <properties>
+      <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed2" />
+    </properties>
+  </tile>
+  <tile id="129">
+    <properties>
+      <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed3" />
+    </properties>
+  </tile>
+  <tile id="130">
+    <properties>
+      <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed4" />
+    </properties>
+  </tile>
 </tileset>

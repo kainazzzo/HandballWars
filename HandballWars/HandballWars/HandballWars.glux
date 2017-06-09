@@ -23,6 +23,16 @@
           <ProjectsToExcludeFrom />
         </ReferencedFileSave>
       </ReferencedFiles>
+      <NamedObjects>
+        <NamedObjectSave>
+          <SourceType>Entity</SourceType>
+          <SourceClassType>Entities\PlatformerCharacterBase</SourceClassType>
+          <InstanceName>Player1</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <GenerateTimedEmit>true</GenerateTimedEmit>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+      </NamedObjects>
     </ScreenSave>
     <ScreenSave>
       <Tags>
@@ -32,7 +42,226 @@
       <Name>Screens\MainMenu</Name>
     </ScreenSave>
   </Screens>
-  <Entities />
+  <Entities>
+    <EntitySave>
+      <Properties>
+        <PropertySave>
+          <Name>StateChainCollection</Name>
+          <ValueAsString>&lt;?xml version="1.0"?&gt;
+&lt;StateChainCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;StateChains /&gt;
+&lt;/StateChainCollection&gt;</ValueAsString>
+        </PropertySave>
+      </Properties>
+      <Tags>
+        <string>GLUE</string>
+        <string>GLUE</string>
+      </Tags>
+      <Source>GLUE</Source>
+      <CustomVariables>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>Entities/PlatformerCharacterBase/MovementValues.csv</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>GroundMovement</Name>
+          <Type>Entities/PlatformerCharacterBase/MovementValues.csv</Type>
+          <DefaultValue xsi:type="xsd:string">ImmediateVelocityOnGround</DefaultValue>
+          <SetByDerived>true</SetByDerived>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>Entities/PlatformerCharacterBase/MovementValues.csv</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>AirMovement</Name>
+          <Type>Entities/PlatformerCharacterBase/MovementValues.csv</Type>
+          <DefaultValue xsi:type="xsd:string">ImmediateVelocityBeforeDoubleJump</DefaultValue>
+          <SetByDerived>true</SetByDerived>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>Entities/PlatformerCharacterBase/MovementValues.csv</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>AfterDoubleJump</Name>
+          <Type>Entities/PlatformerCharacterBase/MovementValues.csv</Type>
+          <DefaultValue xsi:type="xsd:string">ImmediateVelocityInAir</DefaultValue>
+          <SetByDerived>true</SetByDerived>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+      </CustomVariables>
+      <ImplementsIDrawableBatch>false</ImplementsIDrawableBatch>
+      <Name>Entities\PlatformerCharacterBase</Name>
+      <NamedObjects>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>11</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Width</Member>
+            <ValueAsFloat>16</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Height</Member>
+            <ValueAsFloat>22</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceClassType>AxisAlignedRectangle</SourceClassType>
+          <InstanceName>RectangleInstance</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
+          <ExposedInDerived>true</ExposedInDerived>
+          <AttachToContainer>true</AttachToContainer>
+          <GenerateTimedEmit>true</GenerateTimedEmit>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>Sprite</SourceClassType>
+          <InstanceName>MainSprite</InstanceName>
+          <ExposedInDerived>true</ExposedInDerived>
+          <AttachToContainer>true</AttachToContainer>
+          <GenerateTimedEmit>true</GenerateTimedEmit>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+      </NamedObjects>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Entities/PlatformerCharacterBase/MovementValues.csv</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <HasPublicProperty>true</HasPublicProperty>
+          <CreatesDictionary>true</CreatesDictionary>
+          <RuntimeType />
+          <ProjectsToExcludeFrom />
+        </ReferencedFileSave>
+      </ReferencedFiles>
+      <Events>
+        <EventResponseSave>
+          <EventName>AfterGroundMovementSet</EventName>
+          <SourceVariable>GroundMovement</SourceVariable>
+          <BeforeOrAfter>After</BeforeOrAfter>
+        </EventResponseSave>
+        <EventResponseSave>
+          <EventName>AfterAirMovementSet</EventName>
+          <SourceVariable>AirMovement</SourceVariable>
+          <BeforeOrAfter>After</BeforeOrAfter>
+        </EventResponseSave>
+        <EventResponseSave>
+          <EventName>AfterAfterDoubleJumpSet</EventName>
+          <SourceVariable>AfterDoubleJump</SourceVariable>
+          <BeforeOrAfter>After</BeforeOrAfter>
+        </EventResponseSave>
+      </Events>
+      <Is2D>true</Is2D>
+    </EntitySave>
+    <EntitySave>
+      <Properties>
+        <PropertySave>
+          <Name>ImplementsICollidable</Name>
+          <ValueAsBool>true</ValueAsBool>
+        </PropertySave>
+      </Properties>
+      <Tags>
+        <string>GLUE</string>
+      </Tags>
+      <Source>GLUE</Source>
+      <CustomVariables>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>X</Name>
+          <Type>float</Type>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Y</Name>
+          <Type>float</Type>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Z</Name>
+          <Type>float</Type>
+        </CustomVariable>
+      </CustomVariables>
+      <ImplementsIDrawableBatch>false</ImplementsIDrawableBatch>
+      <Name>Entities\PlayerCharacter</Name>
+      <NamedObjects>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>128</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>-128</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Width</Member>
+            <ValueAsFloat>16</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Height</Member>
+            <ValueAsFloat>32</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>Color</Type>
+            <Member>Color</Member>
+            <ValueAsString>Tomato</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>RepositionDirections</Type>
+            <Member>RepositionDirections</Member>
+            <ValueAsInt>1</ValueAsInt>
+          </CustomProperty>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceClassType>AxisAlignedRectangle</SourceClassType>
+          <InstanceName>Body</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
+          <AttachToContainer>true</AttachToContainer>
+          <GenerateTimedEmit>true</GenerateTimedEmit>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+      </NamedObjects>
+      <Is2D>true</Is2D>
+    </EntitySave>
+  </Entities>
   <GlobalFiles>
     <ReferencedFileSave>
       <Name>GumProject/GumProject.gumx</Name>
@@ -84,7 +313,16 @@
       <GenerateCode>true</GenerateCode>
     </CustomClassSave>
   </CustomClasses>
-  <TranslatedFiles />
+  <TranslatedFiles>
+    <TranslatedFileSave>
+      <FileName>Screens/GameScreen.cs</FileName>
+      <TranslationStyle>PerformTranslate</TranslationStyle>
+    </TranslatedFileSave>
+    <TranslatedFileSave>
+      <FileName>Screens/GameScreen.Generated.cs</FileName>
+      <TranslationStyle>PerformTranslate</TranslationStyle>
+    </TranslatedFileSave>
+  </TranslatedFiles>
   <ApplyToFixedResolutionPlatforms>true</ApplyToFixedResolutionPlatforms>
   <ExternallyBuiltFileDirectory>../../</ExternallyBuiltFileDirectory>
   <PluginData>
