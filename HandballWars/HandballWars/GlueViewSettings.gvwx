@@ -58,5 +58,7 @@
       <ElementName>Entities\PlatformerCharacterBase</ElementName>
     </ElementCameraSave>
   </ElementCameraSaves>
-  <CollapsedPlugins />
+  <CollapsedPlugins>
+    <string>GlueView.EmbeddedPlugins.CursorDisplayPlugin.MainPlugin</string>
+  </CollapsedPlugins>
 </GlueViewSettings>

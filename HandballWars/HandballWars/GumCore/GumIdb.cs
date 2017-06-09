@@ -109,14 +109,6 @@ namespace FlatRedBall.Gum
 
         }
 
-        public GraphicalUiElement CreateAndUseEmptyGraphicalUiElement()
-        {
-            this.element = new GraphicalUiElement();
-            this.element.AddToManagers();
-
-            return element;
-        }
-
         public void AssignReferences()
         {
             this.element.AssignReferences();
@@ -393,7 +385,7 @@ namespace FlatRedBall.Gum
             SpriteManager.AddToLayerAllowDuplicateAdds(this, frbLayer);
         }
 
-        public static IEnumerable<RenderingLibrary.Graphics.Layer> AllGumLayersOnFrbLayer(FlatRedBall.Graphics.Layer frbLayer)
+        public IEnumerable<RenderingLibrary.Graphics.Layer> GumLayersOnFrbLayer(FlatRedBall.Graphics.Layer frbLayer)
         {
             if (frbLayer == null)
             {
@@ -411,14 +403,6 @@ namespace FlatRedBall.Gum
                 yield break;
             }
         }
-
-        public IEnumerable<RenderingLibrary.Graphics.Layer> GumLayersOnFrbLayer(FlatRedBall.Graphics.Layer frbLayer)
-        {
-            // Right now this returns all, but I'm making a static and instance version in case we want to have
-            // support for async loading and adding (2 screens alive at once)
-            return AllGumLayersOnFrbLayer(frbLayer);
-        }
-
         #endregion
 
         #region Internal Functions

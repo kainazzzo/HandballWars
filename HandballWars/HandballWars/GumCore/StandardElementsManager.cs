@@ -319,7 +319,8 @@ namespace Gum.Managers
 
             AddPositioningVariables(stateSave);
 
-            AddDimensionsVariables(stateSave, 16, 16, DimensionVariableAction.ExcludeFileOptions);
+            stateSave.Variables.Add(new VariableSave { SetsValue = true, Type = "float", Value = 16.0f, Name = "Width" });
+            stateSave.Variables.Add(new VariableSave { SetsValue = true, Type = "float", Value = 16.0f, Name = "Height" });
 
             stateSave.Variables.Add(new VariableSave { SetsValue = true, Type = "bool", Value = true, Name = "Visible" });
             //AddColorVariables(stateSave, true);

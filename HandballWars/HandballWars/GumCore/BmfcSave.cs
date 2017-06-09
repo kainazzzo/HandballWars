@@ -66,14 +66,12 @@ namespace RenderingLibrary.Graphics.Fonts
             string fileName = null;
             if (outline == 0)
             {
-                fileName = "Font" + fontSize + fontName + ".fnt";
+                fileName = "FontCache\\Font" + fontSize + fontName + ".fnt";
             }
             else
             {
-                fileName = "Font" + fontSize + fontName + "_o" + outline + ".fnt";
+                fileName = "FontCache\\Font" + fontSize + fontName + "_o" + outline + ".fnt";
             }
-
-            fileName = System.IO.Path.Combine("FontCache", fileName);
 
             return fileName;
         }
@@ -97,7 +95,7 @@ namespace RenderingLibrary.Graphics.Fonts
         public void CreateBitmapFontFilesIfNecessary(string fileName)
         {
             string resourceName = "RenderingLibrary.Libraries.bmfont.exe";
-            string locationToSave = FileManager.RelativeDirectory + "Libraries\\bmfont.exe";
+            string locationToSave = FileManager.RelativeDirectory  + "Libraries\\bmfont.exe";
 
             if (!FileManager.FileExists(locationToSave))
             {

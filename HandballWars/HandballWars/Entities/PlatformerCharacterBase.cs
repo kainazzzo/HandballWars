@@ -305,7 +305,28 @@ namespace HandballWars.Entities
             ApplyInput();
 
             DetermineMovementValues();
+
+            ApplyAnimation();
 		}
+
+        private void ApplyAnimation()
+        {
+            if (CurrentMovementType == MovementType.Ground)
+            {
+                if (Math.Abs(this.XVelocity) < .00001f)
+                {
+                    this.CurrentAnimationState = DirectionFacing == HorizontalDirection.Right ? Animation.StandRight : Animation.StandLeft;
+                }
+                else
+                {
+                    this.CurrentAnimationState = DirectionFacing == HorizontalDirection.Right ? Animation.WalkRight : Animation.WalkLeft;
+                }
+            }
+            else
+            {
+                this.CurrentAnimationState = DirectionFacing == HorizontalDirection.Right ? Animation.StandRight : Animation.StandLeft;
+            }
+        }
 
         /// <summary>
         /// Reads all input and applies the read-in values to control
