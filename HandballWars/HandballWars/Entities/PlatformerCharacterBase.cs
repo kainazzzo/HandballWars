@@ -170,7 +170,7 @@ namespace HandballWars.Entities
         /// The input object which controls the horizontal movement of the character.
         /// Common examples include a d-pad, analog stick, or keyboard keys.
         /// </summary>
-        public FlatRedBall.Input.I1DInput HorizontalInput
+        public FlatRedBall.Input.Multiple1DInputs HorizontalInput
         {
             get;
             set;
@@ -281,21 +281,20 @@ namespace HandballWars.Entities
         /// </summary>
         protected virtual void InitializeInput()
         {
+            this.HorizontalInput = new Multiple1DInputs();
             if (FlatRedBall.Input.InputManager.Xbox360GamePads[0].IsConnected)
             {
                 this.JumpInput =
                     FlatRedBall.Input.InputManager.Xbox360GamePads[0].GetButton(FlatRedBall.Input.Xbox360GamePad.Button.A);
 
-                this.HorizontalInput =
-                    FlatRedBall.Input.InputManager.Xbox360GamePads[0].LeftStick.Horizontal;
+                HorizontalInput.Inputs.Add(FlatRedBall.Input.InputManager.Xbox360GamePads[0].LeftStick.Horizontal);
+                HorizontalInput.Inputs.Add(FlatRedBall.Input.InputManager.Xbox360GamePads[0].DPadHorizontal);
             }
             else
             {
                 this.JumpInput =
                     FlatRedBall.Input.InputManager.Keyboard.GetKey(Keys.Space);
-
-                this.HorizontalInput =
-                    FlatRedBall.Input.InputManager.Keyboard.Get1DInput(Keys.Left, Keys.Right);
+                HorizontalInput.Inputs.Add(FlatRedBall.Input.InputManager.Keyboard.Get1DInput(Keys.Left, Keys.Right));
             }
 
             InputEnabled = true;

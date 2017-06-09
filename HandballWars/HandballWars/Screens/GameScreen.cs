@@ -27,13 +27,8 @@ namespace HandballWars.Screens
             FlatRedBallServices.GraphicsOptions.TextureFilter = Microsoft.Xna.Framework.Graphics.TextureFilter.Point;
             mCollision = new TileShapeCollection();
             mCollision.AddCollisionFrom(BasicArena);
+		    mCollision.Visible = false;
 		}
-
-	    private void AssignInput()
-	    {
-	        Player1.HorizontalInput = InputManager.Xbox360GamePads[0].DPadHorizontal;
-	        Player1.JumpInput = InputManager.Xbox360GamePads[0].GetButton(Xbox360GamePad.Button.A);
-	    }
 
 		void CustomActivity(bool firstTimeCalled)
 		{

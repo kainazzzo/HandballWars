@@ -43,6 +43,20 @@
       </CameraSave>
       <ElementName>Screens\GameScreen</ElementName>
     </ElementCameraSave>
+    <ElementCameraSave>
+      <CameraSave>
+        <X>0</X>
+        <Y>0</Y>
+        <Z>40</Z>
+        <Orthogonal>true</Orthogonal>
+        <OrthogonalHeight>405</OrthogonalHeight>
+        <OrthogonalWidth>-1</OrthogonalWidth>
+        <NearClipPlane>1</NearClipPlane>
+        <FarClipPlane>1000</FarClipPlane>
+        <AspectRatio>1.33333337</AspectRatio>
+      </CameraSave>
+      <ElementName>Entities\PlatformerCharacterBase</ElementName>
+    </ElementCameraSave>
   </ElementCameraSaves>
   <CollapsedPlugins />
 </GlueViewSettings>
