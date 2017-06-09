@@ -32,7 +32,7 @@ namespace HandballWars.Screens
 
 		void CustomActivity(bool firstTimeCalled)
 		{
-            Player1.CollideAgainst(() => mCollision.CollideAgainstSolid(Player1.RectangleInstance), false);
+            Player1.CollideAgainst(() => mCollision.CollideAgainstSolid(Player1.RectangleInstance), true);
         }
 
 		void CustomDestroy()
