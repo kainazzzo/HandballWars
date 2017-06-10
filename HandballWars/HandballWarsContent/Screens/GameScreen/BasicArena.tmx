@@ -3,7 +3,7 @@
  <tileset firstgid="1" source="platformertileset.tsx"/>
  <layer name="Layer1" width="45" height="25">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2WMQ6AMAwDKeXjtAK+jTN0YEACFAdScpLHuqdkSU6DKxJ8czjTCWcbwtmGcLYhnI9MnFqa84wUpOpX05yldyR2U+aMzoJUR85MwtmGvzgvyHqSTfGNpvPb9Ojcdnp3f0+58l+Pc/4i7S6Qe8ZLxHcH1CrGb5QRAAA=
+   H4sIAAAAAAAAC+2WQQ6AIAwEQf24EDXh1S4HjiRqutViJ9kjy6S9tMQQirHMiCWiO6vgzjq4sw7urAPTeeHU0pxXJCFZvprmXHsnYjdlzuhMSDbkzMSddfiL84bsnRyCbySd32ZE57bTu/t7ypX/RpzzF2l3Qb1nrKT6nsGMaDWUEQAA
   </data>
  </layer>
 </map>
