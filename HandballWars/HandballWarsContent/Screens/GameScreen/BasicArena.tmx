@@ -1,12 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1.0" orientation="orthogonal" width="45" height="25" tilewidth="16" tileheight="16">
-  <tileset source="platformertileset.tsx" firstgid="1">
-    <image source="spritesheet.png" width="2048" height="2048" />
-  </tileset>
-  <layer name="Layer1" width="45" height="25" visible="1">
-    <properties />
-    <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3WwQqAIBBF0Znqx1Wq3+61cFkkiDZwD9yl+MCNZgAAoLdt9oBGSWVVZg9p4G62qNVnL/kuaWtWJdBmIIpdHQ+dHc/g3+qbjnq/0ffhXf3PROn+d13DSNJGlBEAAA==
-  <length>1125</length></data>
-  </layer>
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="2017.05.26" orientation="orthogonal" renderorder="right-down" width="45" height="25" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" source="platformertileset.tsx"/>
+ <layer name="Layer1" width="45" height="25">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2WMQ6AMAwDKeXjtAK+jTN0YEACFAdScpLHuqdkSU6DKxJ8czjTCWcbwtmGcLYhnI9MnFqa84wUpOpX05yldyR2U+aMzoJUR85MwtmGvzgvyHqSTfGNpvPb9Ojcdnp3f0+58l+Pc/4i7S6Qe8ZLxHcH1CrGb5QRAAA=
+  </data>
+ </layer>
 </map>

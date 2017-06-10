@@ -18,21 +18,43 @@ namespace HandballWars.Screens
 {
 	public partial class GameScreen
 	{
-	    private TileShapeCollection mCollision;
+	    private TileShapeCollection sCollision;
+	    private TileShapeCollection cCollision;
 
-		void CustomInitialize()
+        void CustomInitialize()
 		{
             Camera.Main.X += Camera.Main.OrthogonalWidth / 2.0f;
             Camera.Main.Y -= Camera.Main.OrthogonalHeight / 2.0f;
             FlatRedBallServices.GraphicsOptions.TextureFilter = Microsoft.Xna.Framework.Graphics.TextureFilter.Point;
-            mCollision = new TileShapeCollection();
-            mCollision.AddCollisionFrom(BasicArena);
-		    mCollision.Visible = false;
+
+		    sCollision = new TileShapeCollection();
+		    cCollision = new TileShapeCollection();
+
+
+            var tilesWithCollision = BasicArena.TileProperties
+		        .Where(item => item.Value.Any(property => property.Name == "Has Collision" && (string)property.Value == "True"))
+		        .Where(item => item.Value.Any(property => property.Name == "Is Cloud" && (string)property.Value == "false"))
+                .Select(item => item.Key).ToList();
+
+		    var tilesWithCloudCollision = BasicArena.TileProperties
+		        .Where(item => item.Value.Any(property => property.Name == "Has Collision" && (string)property.Value == "True"))
+		        .Where(item => item.Value.Any(property => property.Name == "Is Cloud" && (string)property.Value == "true"))
+		        .Select(item => item.Key).ToList();
+
+            sCollision.AddCollisionFrom(BasicArena, tilesWithCollision);
+            cCollision.AddCollisionFrom(BasicArena, tilesWithCloudCollision);
+
+		    sCollision.Visible = false;
+		    cCollision.Visible = false;
+         
+		    Player1.X = 200;
+		    Player1.Y = -100;
 		}
 
 		void CustomActivity(bool firstTimeCalled)
 		{
-            Player1.CollideAgainst(() => mCollision.CollideAgainstSolid(Player1.RectangleInstance), true);
+            Player1.CollideAgainst(() => sCollision.CollideAgainstSolid(Player1.RectangleInstance), false);
+            Player1.CollideAgainst(() => cCollision.CollideAgainstSolid(Player1.RectangleInstance), true);
         }
 
 		void CustomDestroy()
