@@ -13,6 +13,8 @@ using BitmapFont = FlatRedBall.Graphics.BitmapFont;
 using Cursor = FlatRedBall.Gui.Cursor;
 using GuiManager = FlatRedBall.Gui.GuiManager;
 using HandballWars.DataTypes;
+using FlatRedBall.Glue.StateInterpolation;
+using StateInterpolationPlugin;
 #if FRB_XNA || SILVERLIGHT
 using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
@@ -271,8 +273,28 @@ namespace HandballWars.Entities
 
             InitializeInput();
 
+            InitializeActions();
+
             CurrentMovementType = MovementType.Ground;
 		}
+
+        private void InitializeActions()
+        {
+            var maxheight = MainSprite.Height;
+            
+
+            JumpAction = () => {
+                Tweener tweener = new Tweener(maxheight / 5.0f, maxheight, .75f, InterpolationType.Bounce, Easing.Out);
+                tweener.Owner = this;
+
+
+                tweener.PositionChanged += height => MainSprite.Height = height;
+
+                TweenerManager.Self.Add(tweener);
+                
+                tweener.Start();
+            };
+        }
 
         /// <summary>
         /// Sets the HorizontalInput and JumpInput instances to either the keyboard or 
