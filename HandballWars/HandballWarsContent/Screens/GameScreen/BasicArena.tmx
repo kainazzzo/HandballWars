@@ -1,12 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2017.05.26" orientation="orthogonal" width="45" height="25" tilewidth="16" tileheight="16">
-  <tileset source="platformertileset.tsx" firstgid="1">
-    <image source="spritesheet.png" width="2048" height="2048" />
-  </tileset>
-  <layer name="Layer1" width="45" height="25" visible="1">
-    <properties />
-    <data encoding="base64" compression="gzip">
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="2017.05.26" orientation="orthogonal" renderorder="right-down" width="45" height="25" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" source="platformertileset.tsx"/>
+ <layer name="Layer1" width="45" height="25">
+  <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+2WQQ6AIAwEQf24EDXh1S4HjiRqutViJ9kjy6S9tMQQirHMiCWiO6vgzjq4sw7urAPTeeHU0pxXJCFZvprmXHsnYjdlzuhMSDbkzMSddfiL84bsnRyCbySd32ZE57bTu/t7ypX/RpzzF2l3Qb1nrKT6nsGMaDWUEQAA
-  <length>1125</length></data>
-  </layer>
+  </data>
+ </layer>
 </map>
