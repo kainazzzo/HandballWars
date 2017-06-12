@@ -32,14 +32,15 @@ namespace HandballWars.Screens
 
 
             var tilesWithCollision = BasicArena.TileProperties
-		        .Where(item => item.Value.Any(property => property.Name == "Has Collision" && (string)property.Value == "True"))
-		        .Where(item => item.Value.Any(property => property.Name == "Is Cloud" && (string)property.Value == "false"))
+		        .Where(item => item.Value.Any(property => property.Name == "HasCollision" && Convert.ToBoolean(property.Value) == true))
+		        .Where(item => item.Value.Any(property => property.Name == "Is Cloud" && Convert.ToBoolean(property.Value) == false) ||
+                    item.Value.All(property => property.Name != "Is Cloud"))
                 .Select(item => item.Key).ToList();
 
 		    var tilesWithCloudCollision = BasicArena.TileProperties
-		        .Where(item => item.Value.Any(property => property.Name == "Has Collision" && (string)property.Value == "True"))
-		        .Where(item => item.Value.Any(property => property.Name == "Is Cloud" && (string)property.Value == "true"))
-		        .Select(item => item.Key).ToList();
+		        .Where(item => item.Value.Any(property => property.Name == "HasCollision" && Convert.ToBoolean(property.Value) == true))
+		        .Where(item => item.Value.Any(property => property.Name == "Is Cloud" && Convert.ToBoolean(property.Value) == true))
+                .Select(item => item.Key).ToList();
 
             sCollision.AddCollisionFrom(BasicArena, tilesWithCollision);
             cCollision.AddCollisionFrom(BasicArena, tilesWithCloudCollision);
@@ -53,8 +54,8 @@ namespace HandballWars.Screens
 
 		void CustomActivity(bool firstTimeCalled)
 		{
-            Player1.CollideAgainst(() => sCollision.CollideAgainstSolid(Player1.RectangleInstance), false);
-            Player1.CollideAgainst(() => cCollision.CollideAgainstSolid(Player1.RectangleInstance), true);
+            Player1.CollideAgainst(() => sCollision.CollideAgainstSolid(Player1), false);
+            Player1.CollideAgainst(() => cCollision.CollideAgainstSolid(Player1), true);
         }
 
 		void CustomDestroy()

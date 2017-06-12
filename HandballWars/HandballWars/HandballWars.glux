@@ -61,6 +61,10 @@
   &lt;StateChains /&gt;
 &lt;/StateChainCollection&gt;</ValueAsString>
         </PropertySave>
+        <PropertySave>
+          <Name>ImplementsICollidable</Name>
+          <ValueAsBool>true</ValueAsBool>
+        </PropertySave>
       </Properties>
       <Tags>
         <string>GLUE</string>
