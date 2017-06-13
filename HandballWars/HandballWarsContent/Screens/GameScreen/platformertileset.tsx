@@ -17,21 +17,21 @@
  <tile id="128">
   <properties>
    <property name="HasCollision (bool)" value="True"/>
-   <property name="Is Cloud (bool)" value="true"/>
+   <property name="Is Cloud (bool)" value="false"/>
    <property name="Name (string)" value="LeftGrassSolid"/>
   </properties>
  </tile>
  <tile id="129">
   <properties>
    <property name="HasCollision (bool)" value="True"/>
-   <property name="Is Cloud (bool)" value="true"/>
+   <property name="Is Cloud (bool)" value="false"/>
    <property name="Name (string)" value="MiddleGrassSolid"/>
   </properties>
  </tile>
  <tile id="130">
   <properties>
    <property name="HasCollision (bool)" value="True"/>
-   <property name="Is Cloud (bool)" value="true"/>
+   <property name="Is Cloud (bool)" value="false"/>
    <property name="Name (string)" value="RightGrassSolid"/>
   </properties>
  </tile>
