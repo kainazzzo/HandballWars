@@ -9,6 +9,7 @@ using FlatRedBall.Graphics.Animation;
 using FlatRedBall.Graphics.Particle;
 using FlatRedBall.Math.Geometry;
 using FlatRedBall.Gui;
+using Microsoft.Xna.Framework;
 
 
 namespace HandballWars.Entities
@@ -30,6 +31,8 @@ namespace HandballWars.Entities
 		{
             this.Position.X = GuiManager.Cursor.WorldXAt(0);
             this.Position.Y = GuiManager.Cursor.WorldYAt(0);
+
+            ParticleGeneratorInstance.CreateRingAt(Position, new Color(0, 101, 135), ParticleEffectSize.Medium);
         }
 
 		private void CustomDestroy()

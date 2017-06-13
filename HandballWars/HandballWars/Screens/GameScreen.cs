@@ -58,7 +58,7 @@ namespace HandballWars.Screens
             Player1.CollideAgainst(() => sCollision.CollideAgainstSolid(Player1), false);
             Player1.CollideAgainst(() => cCollision.CollideAgainstSolid(Player1), true);
 
-            ParticleGeneratorInstance.CreateRingAt(BallInstance.Position, Color.Blue, Entities.ParticleEffectSize.Small);
+            
         }
 
 		void CustomDestroy()

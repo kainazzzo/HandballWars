@@ -1,4 +1,5 @@
 ﻿using FlatRedBall.Graphics.Particle;
+using FlatRedBall.Input;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,25 @@ namespace HandballWars.Entities
 
         private void CustomActivity()
         {
+            if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Up))
+            {
+                RingEmitter.EmissionSettings.RadialVelocity += 10;
+            }
+            else if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Down))
+            {
+                RingEmitter.EmissionSettings.RadialVelocity -= 10;
+            }
 
+            if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.U))
+            {
+                RingEmitter.EmissionSettings.Drag += 1;
+            }
+            else if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Y))
+            {
+                RingEmitter.EmissionSettings.Drag -= 1;
+            }
+
+            FlatRedBall.Debugging.Debugger.Write($"RingEmitter.EmissionSettings.RadialVelocity: {RingEmitter.EmissionSettings.RadialVelocity}\nDrag: {RingEmitter.EmissionSettings.Drag}");
 
         }
 
@@ -83,8 +102,8 @@ namespace HandballWars.Entities
 
             RingEmitter.EmissionSettings.ScaleY = DefaultMinScale * scale;
             RingEmitter.EmissionSettings.ScaleYRange = (DefaultMaxScale - DefaultMinScale) * scale;
-            RingEmitter.EmissionSettings.RadialVelocity = DefaultMaxVelocity * scale;
-            RingEmitter.EmissionSettings.RadialVelocityRange = 0;
+            
+
 
             RingEmitter.Emit();
         }
@@ -105,11 +124,13 @@ namespace HandballWars.Entities
             RingEmitter.EmissionSettings = DefaultEmissionSettings;
 
             // override for slower particles
-            RingEmitter.EmissionSettings.RadialVelocity = 300f;
-            RingEmitter.EmissionSettings.RadialVelocityRange = 50f;
-            RingEmitter.EmissionSettings.Drag = 5f;
+            RingEmitter.EmissionSettings.RadialVelocity = DefaultMinVelocity;
+            RingEmitter.EmissionSettings.RadialVelocityRange = 0f;
+            RingEmitter.EmissionSettings.YAcceleration = RadialYAcceleration;
+            RingEmitter.EmissionSettings.YAccelerationRange = 0f;
+            RingEmitter.EmissionSettings.Drag = DefaultDrag;
             RingEmitter.EmissionSettings.Alpha = 0.5f;
-            RingEmitter.EmissionSettings.AlphaRate = -0.25f;
+            RingEmitter.EmissionSettings.AlphaRate = -2f;
         }
 
         private EmissionSettings DefaultEmissionSettings
@@ -128,8 +149,8 @@ namespace HandballWars.Entities
                     ScaleY = DefaultMinScale,
                     ScaleYRange = DefaultMaxScale,
                     MatchScaleXToY = true,
-                    RadialVelocity = DefaultMinVelocity,
-                    RadialVelocityRange = DefaultMaxVelocity - DefaultMinVelocity,
+                    //RadialVelocity = DefaultMinVelocity,
+                    //RadialVelocityRange = DefaultMaxVelocity - DefaultMinVelocity,
                     RotationZ = -3.14f,
                     RotationZRange = 6.28f,
                     RotationZVelocity = -defaultRotationSpeed,
