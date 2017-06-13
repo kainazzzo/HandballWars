@@ -9,6 +9,7 @@
     <properties>
       <property name="HasCollision (bool)" value="True" />
       <property name="Name (string)" value="SingleGrassCloud" />
+      <property name="Is Cloud (bool)" />
     </properties>
   </tile>
   <tile id="9">
