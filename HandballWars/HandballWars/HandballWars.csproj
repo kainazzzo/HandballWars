@@ -116,6 +116,16 @@
   <ItemGroup>
     <Compile Include="DataTypes\MovementValues.Generated.cs" />
     <Compile Include="DataTypes\TileMapInfo.Generated.cs" />
+    <Compile Include="Entities\Ball.cs" />
+    <Compile Include="Entities\Ball.Generated.cs">
+      <DependentUpon>Ball.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmitterExtensions.cs" />
+    <Compile Include="Entities\ParticleEffectSize.cs" />
+    <Compile Include="Entities\ParticleGenerator.cs" />
+    <Compile Include="Entities\ParticleGenerator.Generated.cs">
+      <DependentUpon>ParticleGenerator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\PlatformerCharacterBase.cs" />
     <Compile Include="Entities\PlatformerCharacterBase.Event.cs">
       <DependentUpon>PlatformerCharacterBase.cs</DependentUpon>

@@ -12,7 +12,7 @@ using FlatRedBall.Graphics.Particle;
 using FlatRedBall.Math.Geometry;
 using FlatRedBall.Localization;
 using FlatRedBall.TileCollisions;
-
+using Microsoft.Xna.Framework;
 
 namespace HandballWars.Screens
 {
@@ -30,7 +30,7 @@ namespace HandballWars.Screens
 		    sCollision = new TileShapeCollection();
 		    cCollision = new TileShapeCollection();
 
-
+            
             var tilesWithCollision = BasicArena.TileProperties
 		        .Where(item => item.Value.Any(property => property.Name == "HasCollision" && Convert.ToBoolean(property.Value) == true))
 		        .Where(item => item.Value.Any(property => property.Name == "Is Cloud" && Convert.ToBoolean(property.Value) == false) ||
@@ -50,12 +50,15 @@ namespace HandballWars.Screens
          
 		    Player1.X = 200;
 		    Player1.Y = -100;
+            
 		}
 
 		void CustomActivity(bool firstTimeCalled)
 		{
             Player1.CollideAgainst(() => sCollision.CollideAgainstSolid(Player1), false);
             Player1.CollideAgainst(() => cCollision.CollideAgainstSolid(Player1), true);
+
+            ParticleGeneratorInstance.CreateRingAt(BallInstance.Position, Color.Blue, Entities.ParticleEffectSize.Small);
         }
 
 		void CustomDestroy()

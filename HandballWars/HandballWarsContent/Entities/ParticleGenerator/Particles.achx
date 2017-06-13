@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AnimationChainArraySave xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FileRelativeTextures>true</FileRelativeTextures>
+  <TimeMeasurementUnit>Undefined</TimeMeasurementUnit>
+  <CoordinateType>Pixel</CoordinateType>
+  <AnimationChain>
+    <Name>Smoke</Name>
+    <Frame>
+      <TextureName>../../Screens/GameScreen/spritesheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>304</LeftCoordinate>
+      <RightCoordinate>336</RightCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>32</BottomCoordinate>
+    </Frame>
+  </AnimationChain>
+</AnimationChainArraySave>
