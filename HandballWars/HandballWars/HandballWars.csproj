@@ -141,6 +141,9 @@
     <Compile Include="Entities\PlatformInteracter.Generated.cs">
       <DependentUpon>PlatformInteracter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\stage\Stage.cs" />
+    <Compile Include="Factories\BallFactory.Generated.cs" />
+    <Compile Include="Factories\PlatformInteracterFactory.Generated.cs" />
     <Compile Include="GlobalContent.Generated.cs" />
     <Compile Include="GumCore\AnimationFrame.cs" />
     <Compile Include="GumCore\Atlas.cs" />

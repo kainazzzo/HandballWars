@@ -55,24 +55,10 @@
           <LayerOn>Top Layer (Engine Layer)</LayerOn>
         </NamedObjectSave>
         <NamedObjectSave>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>X</Member>
-            <ValueAsFloat>400</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Y</Member>
-            <ValueAsFloat>-300</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Z</Member>
-            <ValueAsFloat>11</ValueAsFloat>
-          </CustomProperty>
-          <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\Ball</SourceClassType>
-          <InstanceName>BallInstance</InstanceName>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceClassType>PositionedObjectList&lt;T&gt;</SourceClassType>
+          <SourceClassGenericType>Entities\Ball</SourceClassGenericType>
+          <InstanceName>BallList</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
           <IndependentOfCamera>true</IndependentOfCamera>
@@ -174,6 +160,20 @@
           <HasPublicProperty>true</HasPublicProperty>
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
+          <VariablesToReset>
+            <string>X</string>
+            <string>Y</string>
+            <string>Z</string>
+            <string>XVelocity</string>
+            <string>YVelocity</string>
+            <string>ZVelocity</string>
+            <string>RotationX</string>
+            <string>RotationY</string>
+            <string>RotationZ</string>
+            <string>RotationXVelocity</string>
+            <string>RotationYVelocity</string>
+            <string>RotationZVelocity</string>
+          </VariablesToReset>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
         <NamedObjectSave>
@@ -224,6 +224,22 @@
           <InstanceName>SpriteInstance</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
+          <VariablesToReset>
+            <string>X</string>
+            <string>Y</string>
+            <string>Z</string>
+            <string>XVelocity</string>
+            <string>YVelocity</string>
+            <string>ZVelocity</string>
+            <string>RotationX</string>
+            <string>RotationY</string>
+            <string>RotationZ</string>
+            <string>RotationXVelocity</string>
+            <string>RotationYVelocity</string>
+            <string>RotationZVelocity</string>
+            <string>Alpha</string>
+            <string>AlphaRate</string>
+          </VariablesToReset>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
         <NamedObjectSave>
@@ -245,6 +261,21 @@
           <HasPublicProperty>true</HasPublicProperty>
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
+          <IncludeInICollidable>false</IncludeInICollidable>
+          <VariablesToReset>
+            <string>X</string>
+            <string>Y</string>
+            <string>Z</string>
+            <string>XVelocity</string>
+            <string>YVelocity</string>
+            <string>ZVelocity</string>
+            <string>RotationX</string>
+            <string>RotationY</string>
+            <string>RotationZ</string>
+            <string>RotationXVelocity</string>
+            <string>RotationYVelocity</string>
+            <string>RotationZVelocity</string>
+          </VariablesToReset>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
         <NamedObjectSave>
@@ -263,6 +294,20 @@
           <InstanceName>ParticleGeneratorInstance</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
+          <VariablesToReset>
+            <string>X</string>
+            <string>Y</string>
+            <string>Z</string>
+            <string>XVelocity</string>
+            <string>YVelocity</string>
+            <string>ZVelocity</string>
+            <string>RotationX</string>
+            <string>RotationY</string>
+            <string>RotationZ</string>
+            <string>RotationXVelocity</string>
+            <string>RotationYVelocity</string>
+            <string>RotationZVelocity</string>
+          </VariablesToReset>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
         <NamedObjectSave>
@@ -284,6 +329,21 @@
           <HasPublicProperty>true</HasPublicProperty>
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
+          <IncludeInICollidable>false</IncludeInICollidable>
+          <VariablesToReset>
+            <string>X</string>
+            <string>Y</string>
+            <string>Z</string>
+            <string>XVelocity</string>
+            <string>YVelocity</string>
+            <string>ZVelocity</string>
+            <string>RotationX</string>
+            <string>RotationY</string>
+            <string>RotationZ</string>
+            <string>RotationXVelocity</string>
+            <string>RotationYVelocity</string>
+            <string>RotationZVelocity</string>
+          </VariablesToReset>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
         <NamedObjectSave>
@@ -306,6 +366,20 @@
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
           <DefinedByBase>true</DefinedByBase>
+          <VariablesToReset>
+            <string>X</string>
+            <string>Y</string>
+            <string>Z</string>
+            <string>XVelocity</string>
+            <string>YVelocity</string>
+            <string>ZVelocity</string>
+            <string>RotationX</string>
+            <string>RotationY</string>
+            <string>RotationZ</string>
+            <string>RotationXVelocity</string>
+            <string>RotationYVelocity</string>
+            <string>RotationZVelocity</string>
+          </VariablesToReset>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
       </NamedObjects>
@@ -317,6 +391,7 @@
           <ProjectsToExcludeFrom />
         </ReferencedFileSave>
       </ReferencedFiles>
+      <CreatedByOtherEntities>true</CreatedByOtherEntities>
       <Is2D>true</Is2D>
     </EntitySave>
     <EntitySave>
@@ -711,6 +786,20 @@
           <ExposedInDerived>true</ExposedInDerived>
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
+          <VariablesToReset>
+            <string>X</string>
+            <string>Y</string>
+            <string>Z</string>
+            <string>XVelocity</string>
+            <string>YVelocity</string>
+            <string>ZVelocity</string>
+            <string>RotationX</string>
+            <string>RotationY</string>
+            <string>RotationZ</string>
+            <string>RotationXVelocity</string>
+            <string>RotationYVelocity</string>
+            <string>RotationZVelocity</string>
+          </VariablesToReset>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
         <NamedObjectSave>
@@ -737,6 +826,22 @@
           <ExposedInDerived>true</ExposedInDerived>
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
+          <VariablesToReset>
+            <string>X</string>
+            <string>Y</string>
+            <string>Z</string>
+            <string>XVelocity</string>
+            <string>YVelocity</string>
+            <string>ZVelocity</string>
+            <string>RotationX</string>
+            <string>RotationY</string>
+            <string>RotationZ</string>
+            <string>RotationXVelocity</string>
+            <string>RotationYVelocity</string>
+            <string>RotationZVelocity</string>
+            <string>Alpha</string>
+            <string>AlphaRate</string>
+          </VariablesToReset>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
         <NamedObjectSave>
@@ -759,6 +864,20 @@
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
           <DefinedByBase>true</DefinedByBase>
+          <VariablesToReset>
+            <string>X</string>
+            <string>Y</string>
+            <string>Z</string>
+            <string>XVelocity</string>
+            <string>YVelocity</string>
+            <string>ZVelocity</string>
+            <string>RotationX</string>
+            <string>RotationY</string>
+            <string>RotationZ</string>
+            <string>RotationXVelocity</string>
+            <string>RotationYVelocity</string>
+            <string>RotationZVelocity</string>
+          </VariablesToReset>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
       </NamedObjects>
@@ -868,9 +987,25 @@
           <SetByDerived>true</SetByDerived>
           <AttachToContainer>true</AttachToContainer>
           <GenerateTimedEmit>true</GenerateTimedEmit>
+          <VariablesToReset>
+            <string>X</string>
+            <string>Y</string>
+            <string>Z</string>
+            <string>XVelocity</string>
+            <string>YVelocity</string>
+            <string>ZVelocity</string>
+            <string>RotationX</string>
+            <string>RotationY</string>
+            <string>RotationZ</string>
+            <string>RotationXVelocity</string>
+            <string>RotationYVelocity</string>
+            <string>RotationZVelocity</string>
+          </VariablesToReset>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
       </NamedObjects>
+      <CreatedByOtherEntities>true</CreatedByOtherEntities>
+      <PooledByFactory>true</PooledByFactory>
       <Is2D>true</Is2D>
     </EntitySave>
   </Entities>

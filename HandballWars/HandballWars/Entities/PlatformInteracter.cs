@@ -51,9 +51,9 @@ namespace HandballWars.Entities
         /// Performs a standard solid collision against a ShapeCollection.
         /// </summary>
         /// <param name="shapeCollection"></param>
-        public void CollideAgainst(ShapeCollection shapeCollection)
+        public void CollideAgainst(ShapeCollection shapeCollection, float elasticity)
         {
-            CollideAgainst(shapeCollection, false);
+            CollideAgainst(shapeCollection, elasticity, false);
         }
 
         /// <summary>
@@ -61,9 +61,9 @@ namespace HandballWars.Entities
         /// </summary>
         /// <param name="shapeCollection">The ShapeCollection to collide against.</param>
         /// <param name="isCloudCollision">Whether to perform solid or cloud collisions.</param>
-        public void CollideAgainst(ShapeCollection shapeCollection, bool isCloudCollision)
+        public void CollideAgainst(ShapeCollection shapeCollection, float elasticity, bool isCloudCollision)
         {
-            CollideAgainst(() => shapeCollection.CollideAgainstBounceWithoutSnag(this.AxisAlignedRectangleInstance, 0), isCloudCollision);
+            CollideAgainst(() => shapeCollection.CollideAgainstBounceWithoutSnag(this.AxisAlignedRectangleInstance, elasticity), isCloudCollision);
         }
 
         /// <summary>
