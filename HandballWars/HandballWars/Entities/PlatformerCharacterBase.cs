@@ -50,11 +50,7 @@ namespace HandballWars.Entities
     public partial class PlatformerCharacterBase
     {
         #region Fields
-
-        /// <summary>
-        /// See property for information.
-        /// </summary>
-        bool mIsOnGround = false;
+        
 
         /// <summary>
         /// Whether the character has hit its head on a solid
@@ -101,14 +97,7 @@ namespace HandballWars.Entities
         /// </summary>
         MovementType mMovementType;
 
-        /// <summary>
-        /// The last time collision checks were performed. Time values uniquely
-        /// identify a game frame, so this is used to store whether collisions have
-        /// been tested this frame or not. This is used to determine whether collision
-        /// variables should be reset or not when a collision method is called, as
-        /// multiple collisions (such as vs. solid and vs. cloud) may occur in one frame.
-        /// </summary>
-        double mLastCollisionTime = -1;
+        
         #endregion
 
         #region Properties
@@ -150,7 +139,7 @@ namespace HandballWars.Entities
         /// <summary>
         /// Which direciton the character is facing.
         /// </summary>
-        protected HorizontalDirection DirectionFacing
+        public HorizontalDirection DirectionFacing
         {
             get
             {
@@ -197,18 +186,6 @@ namespace HandballWars.Entities
             }
         }
 
-        /// <summary>
-        /// Whether the character is on the ground. This is false
-        /// if the character has jumped or walked off of the edge
-        /// of a platform.
-        /// </summary>
-        public bool IsOnGround
-        {
-            get
-            {
-                return mIsOnGround;
-            }
-        }
 
         /// <summary>
         /// The current movement type. This is set by the default platformer logic and
@@ -262,10 +239,6 @@ namespace HandballWars.Entities
         /// </summary>
         public Action JumpAction;
 
-        /// <summary>
-        /// Action for when the character lands from a jump.
-        /// </summary>
-        public Action LandedAction;
 
 
         private void CustomInitialize()
@@ -434,7 +407,7 @@ namespace HandballWars.Entities
 
             if (jumpPushed && 
                 CurrentMovement.JumpVelocity > 0 &&
-                (mIsOnGround || AfterDoubleJump == null || 
+                (IsOnGround || AfterDoubleJump == null || 
 				(AfterDoubleJump != null && mHasDoubleJumped == false) ||
 				(AfterDoubleJump != null && AfterDoubleJump.JumpVelocity > 0)
 
@@ -491,88 +464,7 @@ namespace HandballWars.Entities
 
         }
 
-        /// <summary>
-        /// Performs a standard solid collision against a ShapeCollection.
-        /// </summary>
-        /// <param name="shapeCollection"></param>
-        public void CollideAgainst(ShapeCollection shapeCollection)
-        {
-            CollideAgainst(shapeCollection, false);
-        }
-
-        /// <summary>
-        /// Performs a solid or cloud collision against a ShapeCollection.
-        /// </summary>
-        /// <param name="shapeCollection">The ShapeCollection to collide against.</param>
-        /// <param name="isCloudCollision">Whether to perform solid or cloud collisions.</param>
-        public void CollideAgainst(ShapeCollection shapeCollection, bool isCloudCollision)
-        {
-            CollideAgainst(() => shapeCollection.CollideAgainstBounceWithoutSnag(this.RectangleInstance, 0), isCloudCollision);
-        }
-
-        /// <summary>
-        /// Executes the collisionFunction to determine if a collision occurred, and if so, reacts
-        /// to the collision by modifying the state of the object and raising appropriate events.
-        /// This is useful for situations where custom collisions are needed, but then the standard
-        /// behavior is desired if a collision occurs.
-        /// </summary>
-        /// <param name="collisionFunction">The collision function to execute.</param>
-        /// <param name="isCloudCollision">Whether to perform cloud collision (only check when moving down)</param>
-        public void CollideAgainst(Func<bool> collisionFunction, bool isCloudCollision)
-        {
-            Vector3 positionBeforeCollision = this.Position;
-            Vector3 velocityBeforeCollision = this.Velocity;
-
-            float lastY = this.Y;
-
-            bool isFirstCollisionOfTheFrame = TimeManager.CurrentTime != mLastCollisionTime;
-
-            if (isFirstCollisionOfTheFrame)
-            {
-                mLastCollisionTime = TimeManager.CurrentTime;
-                mIsOnGround = false;
-                mHitHead = false;
-            }
-
-            if(isCloudCollision == false || velocityBeforeCollision.Y < 0)
-            {
-
-                if (collisionFunction())
-                {
-                    // make sure that we've been moved up, and that we're falling
-                    bool shouldApplyCollision = true;
-                    if (isCloudCollision)
-                    {
-                        if (this.Y <= positionBeforeCollision.Y)
-                        {
-                            shouldApplyCollision = false;
-                        }
-                    }
-
-                    if (shouldApplyCollision)
-                    {
-
-                        if (this.Y > lastY)
-                        {
-                            if (!mIsOnGround && LandedAction != null)
-                            {
-                                LandedAction();
-                            }
-                            mIsOnGround = true;
-                        }
-                        if (this.Y < lastY)
-                        {
-                            mHitHead = true;
-                        }
-                    }
-                    else
-                    {
-                        Position = positionBeforeCollision;
-                        Velocity = velocityBeforeCollision;
-                    }
-                }
-            }
-        }
+        
 
         /// <summary>
         /// Assigns the current movement values based off of whether the user is on ground and has double-jumped or not.
@@ -581,7 +473,7 @@ namespace HandballWars.Entities
         /// </summary>
         protected virtual void DetermineMovementValues()
         {
-            if (mIsOnGround)
+            if (IsOnGround)
             {
                 mHasDoubleJumped = false;
                 if (CurrentMovementType == MovementType.Air ||

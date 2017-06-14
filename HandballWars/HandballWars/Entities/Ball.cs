@@ -14,14 +14,19 @@ using Microsoft.Xna.Framework;
 
 namespace HandballWars.Entities
 {
-	public partial class Ball
+	public partial class Ball : IPlatformInteracter
 	{
+        public PlatformerCharacterBase Held { get; set; } = null;
+        public double LastCollisionTime { get; set; }
+        public bool IsOnGround { get; set; }
+        public Action LandedAction { get; set; } = null;
+
         /// <summary>
         /// Initialization logic which is execute only one time for this Entity (unless the Entity is pooled).
         /// This method is called when the Entity is added to managers. Entities which are instantiated but not
         /// added to managers will not have this method called.
         /// </summary>
-		private void CustomInitialize()
+        private void CustomInitialize()
 		{
 
 
@@ -29,10 +34,37 @@ namespace HandballWars.Entities
 
 		private void CustomActivity()
 		{
-            this.Position.X = GuiManager.Cursor.WorldXAt(0);
-            this.Position.Y = GuiManager.Cursor.WorldYAt(0);
-
             ParticleGeneratorInstance.CreateRingAt(Position, new Color(0, 101, 135), ParticleEffectSize.Medium);
+            
+            if (this.Held != null)
+            {
+                var distance = this.Held.Position - this.Position;
+
+                this.Acceleration = distance;
+                Acceleration.X += Held.DirectionFacing == HorizontalDirection.Right ? 8f : -8f;
+                
+                if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Up))
+                {
+                    HeldAccelerationSpeed += 10f;
+                }
+                else if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Down))
+                {
+                    HeldAccelerationSpeed -= 10f;
+                }
+                if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.U))
+                {
+                    HeldDrag += 1f;
+                }
+                else if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Y))
+                {
+                    HeldDrag -= 1f;
+                }
+
+                FlatRedBall.Debugging.Debugger.Write($"Acceleration: {HeldAccelerationSpeed}\nDrag: {HeldDrag}");
+
+                this.Acceleration *= HeldAccelerationSpeed;
+                this.Drag = HeldDrag;
+            }
         }
 
 		private void CustomDestroy()
@@ -46,5 +78,6 @@ namespace HandballWars.Entities
 
 
         }
-	}
+        
+    }
 }

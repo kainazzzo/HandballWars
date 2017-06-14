@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 namespace HandballWars.Entities
 {
     public partial class ParticleGenerator
-    {
+    { 
+        private bool setupRingCalled = false;
+        private bool setupExplosionCalled = false;
         /// <summary>
         /// Dictionary provides scaling factors for explosion sizes
         /// </summary>
@@ -33,32 +35,11 @@ namespace HandballWars.Entities
 
         private void CustomInitialize()
         {
-            SetupExplosionEmitter();
-            SetupRingEmitter();
+            
         }
 
         private void CustomActivity()
         {
-            if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Up))
-            {
-                RingEmitter.EmissionSettings.RadialVelocity += 10;
-            }
-            else if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Down))
-            {
-                RingEmitter.EmissionSettings.RadialVelocity -= 10;
-            }
-
-            if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.U))
-            {
-                RingEmitter.EmissionSettings.Drag += 1;
-            }
-            else if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Y))
-            {
-                RingEmitter.EmissionSettings.Drag -= 1;
-            }
-
-            FlatRedBall.Debugging.Debugger.Write($"RingEmitter.EmissionSettings.RadialVelocity: {RingEmitter.EmissionSettings.RadialVelocity}\nDrag: {RingEmitter.EmissionSettings.Drag}");
-
         }
 
         private void CustomDestroy()
@@ -75,6 +56,12 @@ namespace HandballWars.Entities
 
         public void CreateExplosionAt(Vector3 position, Color color, ParticleEffectSize size)
         {
+            if (setupExplosionCalled == false)
+            {
+                SetupExplosionEmitter();
+                setupExplosionCalled = true;
+            }
+
             Position = position;
 
             var scale = explosionScale[size];
@@ -92,6 +79,12 @@ namespace HandballWars.Entities
 
         public void CreateRingAt(Vector3 position, Color color, ParticleEffectSize size)
         {
+            if (setupRingCalled == false)
+            {
+                SetupRingEmitter();
+                setupRingCalled = true;
+            }
+
             Position = position;
 
             var scale = ringScale[size];
@@ -102,8 +95,6 @@ namespace HandballWars.Entities
 
             RingEmitter.EmissionSettings.ScaleY = DefaultMinScale * scale;
             RingEmitter.EmissionSettings.ScaleYRange = (DefaultMaxScale - DefaultMinScale) * scale;
-            
-
 
             RingEmitter.Emit();
         }

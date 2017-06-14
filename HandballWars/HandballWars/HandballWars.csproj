@@ -121,6 +121,7 @@
       <DependentUpon>Ball.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\EmitterExtensions.cs" />
+    <Compile Include="Entities\IPlatformInteracter.cs" />
     <Compile Include="Entities\ParticleEffectSize.cs" />
     <Compile Include="Entities\ParticleGenerator.cs" />
     <Compile Include="Entities\ParticleGenerator.Generated.cs">
@@ -136,9 +137,9 @@
     <Compile Include="Entities\PlatformerCharacterBase.Generated.Event.cs">
       <DependentUpon>PlatformerCharacterBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\PlayerCharacter.cs" />
-    <Compile Include="Entities\PlayerCharacter.Generated.cs">
-      <DependentUpon>PlayerCharacter.cs</DependentUpon>
+    <Compile Include="Entities\PlatformInteracter.cs" />
+    <Compile Include="Entities\PlatformInteracter.Generated.cs">
+      <DependentUpon>PlatformInteracter.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalContent.Generated.cs" />
     <Compile Include="GumCore\AnimationFrame.cs" />

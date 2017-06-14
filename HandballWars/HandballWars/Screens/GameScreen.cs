@@ -13,6 +13,9 @@ using FlatRedBall.Math.Geometry;
 using FlatRedBall.Localization;
 using FlatRedBall.TileCollisions;
 using Microsoft.Xna.Framework;
+using FlatRedBall.Glue.StateInterpolation;
+using StateInterpolationPlugin;
+using HandballWars.Entities;
 
 namespace HandballWars.Screens
 {
@@ -58,7 +61,24 @@ namespace HandballWars.Screens
             Player1.CollideAgainst(() => sCollision.CollideAgainstSolid(Player1), false);
             Player1.CollideAgainst(() => cCollision.CollideAgainstSolid(Player1), true);
 
-            
+            if (BallInstance.Held == null)
+            {            
+                if (Player1.CollideAgainst(BallInstance.SecuredCircleInstance))
+                {
+                    BallInstance.Held = Player1;
+                }
+            }
+            else if (!Player1.CollideAgainst(BallInstance.DropCircleInstance))
+            {
+                BallInstance.Held = null;
+                BallInstance.YAcceleration = -100f;
+            }
+
+            if (BallInstance.Held == null)
+            {
+                BallInstance.CollideAgainst(() => sCollision.CollideAgainstSolid(BallInstance), false);
+                BallInstance.CollideAgainst(() => cCollision.CollideAgainstSolid(BallInstance), true);
+            }
         }
 
 		void CustomDestroy()
@@ -73,5 +93,8 @@ namespace HandballWars.Screens
 
         }
 
-	}
+       
+
+
+    }
 }
