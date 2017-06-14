@@ -43,24 +43,24 @@ namespace HandballWars.Entities
                 this.Acceleration = distance;
                 Acceleration.X += Held.DirectionFacing == HorizontalDirection.Right ? 8f : -8f;
                 
-                if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Up))
-                {
-                    HeldAccelerationSpeed += 10f;
-                }
-                else if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Down))
-                {
-                    HeldAccelerationSpeed -= 10f;
-                }
-                if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.U))
-                {
-                    HeldDrag += 1f;
-                }
-                else if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Y))
-                {
-                    HeldDrag -= 1f;
-                }
+                //if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Up))
+                //{
+                //    HeldAccelerationSpeed += 10f;
+                //}
+                //else if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Down))
+                //{
+                //    HeldAccelerationSpeed -= 10f;
+                //}
+                //if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.U))
+                //{
+                //    HeldDrag += 1f;
+                //}
+                //else if (InputManager.Keyboard.KeyDown(Microsoft.Xna.Framework.Input.Keys.Y))
+                //{
+                //    HeldDrag -= 1f;
+                //}
 
-                FlatRedBall.Debugging.Debugger.Write($"Acceleration: {HeldAccelerationSpeed}\nDrag: {HeldDrag}");
+                //FlatRedBall.Debugging.Debugger.Write($"Acceleration: {HeldAccelerationSpeed}\nDrag: {HeldDrag}");
 
                 this.Acceleration *= HeldAccelerationSpeed;
                 this.Drag = HeldDrag;

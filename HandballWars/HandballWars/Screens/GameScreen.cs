@@ -58,12 +58,14 @@ namespace HandballWars.Screens
 
                 if (BallInstance.Held == null)
                 {
-                    BallInstance.YAcceleration = -100f;
-                    stage.CheckCollision(BallInstance);
+                    BallInstance.YAcceleration = BallGravity;
+                    stage.CheckCollision(BallInstance, BallElasticity);
                 }
             }
 
-            stage.CheckCollision(Player1);
+
+
+            stage.CheckCollision(Player1, 0.0f);
         }
 
 		void CustomDestroy()

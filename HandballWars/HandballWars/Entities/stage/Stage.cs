@@ -38,10 +38,10 @@ namespace HandballWars.Entities.stage
             cCollision.Visible = false;
         }
 
-        public void CheckCollision(PlatformInteracter character)
+        public void CheckCollision(PlatformInteracter character, float elasticity)
         {
-            character.CollideAgainst(() => sCollision.CollideAgainstSolid(character), false);
-            character.CollideAgainst(() => cCollision.CollideAgainstSolid(character), true);
+            character.CollideAgainst(() => sCollision.CollideAgainstSolid(character, elasticity), false);
+            character.CollideAgainst(() => cCollision.CollideAgainstSolid(character, elasticity), true);
         }
     }
 }
