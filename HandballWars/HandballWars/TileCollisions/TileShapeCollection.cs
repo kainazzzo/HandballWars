@@ -137,11 +137,11 @@ namespace FlatRedBall.TileCollisions
             return mShapes.CollideAgainst(collidable.Collision, true, mSortAxis);
         }
 
-        public bool CollideAgainstSolid(ICollidable collidable, float elasticity)
+        public bool CollideAgainstSolid(ICollidable collidable)
         {
             bool toReturn = false;
 
-            toReturn = mShapes.CollideAgainstBounce(collidable.Collision, true, mSortAxis, 1, 0, elasticity);
+            toReturn = mShapes.CollideAgainstBounce(collidable.Collision, true, mSortAxis, 1, 0, 0);
 
             return toReturn;
         }
