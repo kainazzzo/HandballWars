@@ -534,13 +534,13 @@
   <tile id="15">
     <properties>
       <property name="Name (string)" value="Player1Start" />
-      <property name="EntityName (string)" value="Entities\PlatformCharacterBase" />
+      <property name="EntityName (string)" value="Entities\Player1" />
     </properties>
   </tile>
   <tile id="271">
     <properties>
       <property name="Name (string)" value="Player2Start" />
-      <property name="EntityName (string)" value="Entities\PlatformerCharacterBase" />
+      <property name="EntityName (string)" value="Entities\Player2" />
     </properties>
   </tile>
 </tileset>

@@ -145,9 +145,15 @@
     <Compile Include="Entities\Player1.Generated.cs">
       <DependentUpon>Player1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Player2.cs" />
+    <Compile Include="Entities\Player2.Generated.cs">
+      <DependentUpon>Player2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\stage\Stage.cs" />
     <Compile Include="Factories\BallFactory.Generated.cs" />
     <Compile Include="Factories\PlatformerCharacterBaseFactory.Generated.cs" />
+    <Compile Include="Factories\Player1Factory.Generated.cs" />
+    <Compile Include="Factories\Player2Factory.Generated.cs" />
     <Compile Include="GlobalContent.Generated.cs" />
     <Compile Include="GumCore\AnimationFrame.cs" />
     <Compile Include="GumCore\Atlas.cs" />

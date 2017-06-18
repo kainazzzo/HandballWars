@@ -10,32 +10,32 @@
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>242</LeftCoordinate>
       <RightCoordinate>256</RightCoordinate>
-      <TopCoordinate>0</TopCoordinate>
-      <BottomCoordinate>17</BottomCoordinate>
+      <TopCoordinate>33</TopCoordinate>
+      <BottomCoordinate>50</BottomCoordinate>
     </Frame>
     <Frame>
       <TextureName>../../screens/gamescreen/spritesheet.png</TextureName>
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>259</LeftCoordinate>
       <RightCoordinate>272</RightCoordinate>
-      <TopCoordinate>1</TopCoordinate>
-      <BottomCoordinate>17</BottomCoordinate>
+      <TopCoordinate>34</TopCoordinate>
+      <BottomCoordinate>50</BottomCoordinate>
     </Frame>
     <Frame>
       <TextureName>../../screens/gamescreen/spritesheet.png</TextureName>
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>275</LeftCoordinate>
       <RightCoordinate>288</RightCoordinate>
-      <TopCoordinate>0</TopCoordinate>
-      <BottomCoordinate>17</BottomCoordinate>
+      <TopCoordinate>33</TopCoordinate>
+      <BottomCoordinate>50</BottomCoordinate>
     </Frame>
     <Frame>
       <TextureName>../../screens/gamescreen/spritesheet.png</TextureName>
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>291</LeftCoordinate>
       <RightCoordinate>304</RightCoordinate>
-      <TopCoordinate>1</TopCoordinate>
-      <BottomCoordinate>17</BottomCoordinate>
+      <TopCoordinate>34</TopCoordinate>
+      <BottomCoordinate>50</BottomCoordinate>
     </Frame>
   </AnimationChain>
   <AnimationChain>
@@ -46,8 +46,8 @@
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>242</LeftCoordinate>
       <RightCoordinate>256</RightCoordinate>
-      <TopCoordinate>0</TopCoordinate>
-      <BottomCoordinate>17</BottomCoordinate>
+      <TopCoordinate>33</TopCoordinate>
+      <BottomCoordinate>50</BottomCoordinate>
     </Frame>
     <Frame>
       <FlipHorizontal>true</FlipHorizontal>
@@ -55,8 +55,8 @@
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>259</LeftCoordinate>
       <RightCoordinate>272</RightCoordinate>
-      <TopCoordinate>1</TopCoordinate>
-      <BottomCoordinate>17</BottomCoordinate>
+      <TopCoordinate>34</TopCoordinate>
+      <BottomCoordinate>50</BottomCoordinate>
     </Frame>
     <Frame>
       <FlipHorizontal>true</FlipHorizontal>
@@ -64,8 +64,8 @@
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>275</LeftCoordinate>
       <RightCoordinate>288</RightCoordinate>
-      <TopCoordinate>0</TopCoordinate>
-      <BottomCoordinate>17</BottomCoordinate>
+      <TopCoordinate>33</TopCoordinate>
+      <BottomCoordinate>50</BottomCoordinate>
     </Frame>
     <Frame>
       <FlipHorizontal>true</FlipHorizontal>
@@ -73,8 +73,8 @@
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>291</LeftCoordinate>
       <RightCoordinate>304</RightCoordinate>
-      <TopCoordinate>1</TopCoordinate>
-      <BottomCoordinate>17</BottomCoordinate>
+      <TopCoordinate>34</TopCoordinate>
+      <BottomCoordinate>50</BottomCoordinate>
     </Frame>
   </AnimationChain>
   <AnimationChain>
@@ -84,16 +84,16 @@
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>240</LeftCoordinate>
       <RightCoordinate>256</RightCoordinate>
-      <TopCoordinate>19</TopCoordinate>
-      <BottomCoordinate>33</BottomCoordinate>
+      <TopCoordinate>52</TopCoordinate>
+      <BottomCoordinate>66</BottomCoordinate>
     </Frame>
     <Frame>
       <TextureName>../../screens/gamescreen/spritesheet.png</TextureName>
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>256</LeftCoordinate>
       <RightCoordinate>272</RightCoordinate>
-      <TopCoordinate>23</TopCoordinate>
-      <BottomCoordinate>33</BottomCoordinate>
+      <TopCoordinate>56</TopCoordinate>
+      <BottomCoordinate>66</BottomCoordinate>
     </Frame>
   </AnimationChain>
   <AnimationChain>
@@ -104,8 +104,8 @@
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>240</LeftCoordinate>
       <RightCoordinate>256</RightCoordinate>
-      <TopCoordinate>19</TopCoordinate>
-      <BottomCoordinate>33</BottomCoordinate>
+      <TopCoordinate>52</TopCoordinate>
+      <BottomCoordinate>66</BottomCoordinate>
     </Frame>
     <Frame>
       <FlipHorizontal>true</FlipHorizontal>
@@ -113,8 +113,8 @@
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>256</LeftCoordinate>
       <RightCoordinate>272</RightCoordinate>
-      <TopCoordinate>23</TopCoordinate>
-      <BottomCoordinate>33</BottomCoordinate>
+      <TopCoordinate>56</TopCoordinate>
+      <BottomCoordinate>66</BottomCoordinate>
     </Frame>
   </AnimationChain>
   <AnimationChain>
@@ -124,8 +124,8 @@
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>291</LeftCoordinate>
       <RightCoordinate>304</RightCoordinate>
-      <TopCoordinate>1</TopCoordinate>
-      <BottomCoordinate>17</BottomCoordinate>
+      <TopCoordinate>34</TopCoordinate>
+      <BottomCoordinate>50</BottomCoordinate>
     </Frame>
   </AnimationChain>
   <AnimationChain>
@@ -136,8 +136,8 @@
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>291</LeftCoordinate>
       <RightCoordinate>304</RightCoordinate>
-      <TopCoordinate>1</TopCoordinate>
-      <BottomCoordinate>17</BottomCoordinate>
+      <TopCoordinate>34</TopCoordinate>
+      <BottomCoordinate>50</BottomCoordinate>
     </Frame>
   </AnimationChain>
 </AnimationChainArraySave>

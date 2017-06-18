@@ -16,12 +16,14 @@ using HandballWars.Entities.stage;
 using Microsoft.Xna.Framework;
 using HandballWars.Factories;
 using FlatRedBall.TileEntities;
+using HandballWars.Entities;
 
 namespace HandballWars.Screens
 {
 	public partial class GameScreen
 	{
 	    private Stage stage;
+        List<PlatformerCharacterBase> PlatformerCharacterBaseList;
 
         void CustomInitialize()
 		{
@@ -42,8 +44,11 @@ namespace HandballWars.Screens
             ball.X = 400;
             ball.Y = -100;
 
+            PlatformerCharacterBaseList = new List<PlatformerCharacterBase>();
+
             TileEntityInstantiator.CreateEntitiesFrom(BasicArena);
-            
+
+            PlatformerCharacterBaseList.AddRange(PlatformInteracterList.OfType<PlatformerCharacterBase>());
 		}
 
 		void CustomActivity(bool firstTimeCalled)
