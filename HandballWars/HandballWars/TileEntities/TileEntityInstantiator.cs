@@ -15,7 +15,7 @@ namespace FlatRedBall.TileEntities
     {
 
         /// <summary>
-        /// Creates entities from a single layer for any tile with the EntityToCreate property.
+        /// Creates entities from a single layer for any tile with the EntityName property.
         /// </summary>
         /// <param name="mapLayer">The layer to create entities from.</param>
         /// <param name="layeredTileMap">The map which contains the mapLayer instance.</param>
@@ -28,7 +28,7 @@ namespace FlatRedBall.TileEntities
             foreach (var entityToRemove in entitiesToRemove)
             {
                 string remove = entityToRemove;
-                mapLayer.RemoveTiles(t => t.Any(item => item.Name == "EntityToCreate" && item.Value as string == remove), layeredTileMap.TileProperties);
+                mapLayer.RemoveTiles(t => t.Any(item => item.Name == "EntityName" && item.Value as string == remove), layeredTileMap.TileProperties);
             }
 
         }
@@ -44,7 +44,7 @@ namespace FlatRedBall.TileEntities
             foreach (var entityToRemove in entitiesToRemove)
             {
                 string remove = entityToRemove;
-                layeredTileMap.RemoveTiles(t => t.Any(item => item.Name == "EntityToCreate" && item.Value as string == remove), layeredTileMap.TileProperties);
+                layeredTileMap.RemoveTiles(t => t.Any(item => item.Name == "EntityName" && item.Value as string == remove), layeredTileMap.TileProperties);
             }
             foreach (var shapeCollection in layeredTileMap.ShapeCollections)
             {
@@ -55,7 +55,7 @@ namespace FlatRedBall.TileEntities
                     if (!string.IsNullOrEmpty(polygon.Name) && layeredTileMap.ShapeProperties.ContainsKey(polygon.Name))
                     {
                         var properties = layeredTileMap.ShapeProperties[polygon.Name];
-                        var entityAddingProperty = properties.FirstOrDefault(item => item.Name == "EntityToCreate");
+                        var entityAddingProperty = properties.FirstOrDefault(item => item.Name == "EntityName");
 
                         var entityType = entityAddingProperty.Value as string;
                         if (!string.IsNullOrEmpty(entityType))
@@ -92,11 +92,11 @@ namespace FlatRedBall.TileEntities
 
             foreach (var propertyList in propertiesDictionary.Values)
             {
-                if (propertyList.Any(item2 => item2.Name == "EntityToCreate"))
+                if (propertyList.Any(item2 => item2.Name == "EntityName"))
                 {
                     var tileName = propertyList.FirstOrDefault(item => item.Name.ToLowerInvariant() == "name").Value as string;
 
-                    var entityType = propertyList.FirstOrDefault(item => item.Name == "EntityToCreate").Value as string;
+                    var entityType = propertyList.FirstOrDefault(item => item.Name == "EntityName").Value as string;
 
                     if (!string.IsNullOrEmpty(entityType) && dictionary.ContainsKey(tileName))
                     {
@@ -174,10 +174,10 @@ namespace FlatRedBall.TileEntities
 
             foreach (var property in propertiesToAssign)
             {
-                // If name is EntityToCreate, skip it:
+                // If name is EntityName, skip it:
                 string propertyName = property.Name;
 
-                bool shouldSet = propertyName != "EntityToCreate";
+                bool shouldSet = propertyName != "EntityName";
 
                 if (shouldSet)
                 {

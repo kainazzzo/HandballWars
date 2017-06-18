@@ -15,6 +15,7 @@ using FlatRedBall.TileCollisions;
 using HandballWars.Entities.stage;
 using Microsoft.Xna.Framework;
 using HandballWars.Factories;
+using FlatRedBall.TileEntities;
 
 namespace HandballWars.Screens
 {
@@ -27,33 +28,46 @@ namespace HandballWars.Screens
             Camera.Main.X += Camera.Main.OrthogonalWidth / 2.0f;
             Camera.Main.Y -= Camera.Main.OrthogonalHeight / 2.0f;
             FlatRedBallServices.GraphicsOptions.TextureFilter = Microsoft.Xna.Framework.Graphics.TextureFilter.Point;
-            
+
+            BasicArena.AddToManagers();
             stage = new Stage(BasicArena);
 
-		    Player1.X = 200;
-		    Player1.Y = -100;
+            
+
+		    //Player1.X = 200;
+		    //Player1.Y = -100;
 
             var ball = BallFactory.CreateNew();
 
             ball.X = 400;
             ball.Y = -100;
+
+            TileEntityInstantiator.CreateEntitiesFrom(BasicArena);
+            
 		}
 
 		void CustomActivity(bool firstTimeCalled)
 		{
+            HandleCamera();
             foreach (var BallInstance in BallList)
             {
                 if (BallInstance.Held == null)
                 {
-                    if (Player1.CollideAgainst(BallInstance.SecuredCircleInstance))
-                    {
-                        BallInstance.Held = Player1;
-                        BallInstance.YAcceleration = 0;
+                    foreach (var player in PlatformerCharacterBaseList) {
+                        if (BallInstance.Held == null && player.CollideAgainst(BallInstance.SecuredCircleInstance))
+                        {
+                            BallInstance.Held = player;
+                            BallInstance.YAcceleration = 0;
+                        }
                     }
                 }
-                else if (!Player1.CollideAgainst(BallInstance.DropCircleInstance))
+
+                foreach (var player in PlatformerCharacterBaseList)
                 {
-                    BallInstance.Held = null;
+                    if (BallInstance.Held == player && !player.CollideAgainst(BallInstance.DropCircleInstance))
+                    {
+                        BallInstance.Held = null;
+                    }
                 }
 
                 if (BallInstance.Held == null)
@@ -64,11 +78,23 @@ namespace HandballWars.Screens
             }
 
 
-
-            stage.CheckCollision(Player1, 0.0f);
+            foreach (var player in PlatformerCharacterBaseList)
+            {
+                stage.CheckCollision(player, 0.0f);
+            }
         }
 
-		void CustomDestroy()
+        private void HandleCamera()
+        {
+            if (Camera.Main.Parent == null && PlatformerCharacterBaseList?.Count > 0)
+            {
+                Camera.Main.AttachTo(PlatformerCharacterBaseList[0], true);
+            }
+
+                        
+        }
+
+        void CustomDestroy()
 		{
 
 

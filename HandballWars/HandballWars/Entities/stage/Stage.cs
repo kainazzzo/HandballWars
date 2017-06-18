@@ -21,14 +21,14 @@ namespace HandballWars.Entities.stage
 
 
             var tilesWithCollision = map.TileProperties
-                .Where(item => item.Value.Any(property => property.Name == "HasCollision" && Convert.ToBoolean(property.Value) == true))
-                .Where(item => item.Value.Any(property => property.Name == "Is Cloud" && Convert.ToBoolean(property.Value) == false) ||
-                               item.Value.All(property => property.Name != "Is Cloud"))
+                .Where(item => item.Value.Any(property => property.Name == "HasCollision" && String.Equals((string)property.Value, "true", StringComparison.OrdinalIgnoreCase)))
+                .Where(item => item.Value.Any(property => property.Name == "Is Cloud" && !String.Equals((string)property.Value, "true", StringComparison.OrdinalIgnoreCase) ||
+                               item.Value.All(property2 => property2.Name != "Is Cloud")))
                 .Select(item => item.Key).ToList();
 
             var tilesWithCloudCollision = map.TileProperties
-                .Where(item => item.Value.Any(property => property.Name == "HasCollision" && Convert.ToBoolean(property.Value) == true))
-                .Where(item => item.Value.Any(property => property.Name == "Is Cloud" && Convert.ToBoolean(property.Value) == true))
+                .Where(item => item.Value.Any(property => property.Name == "HasCollision" && String.Equals((string)property.Value, "true", StringComparison.OrdinalIgnoreCase)))
+                .Where(item => item.Value.Any(property => property.Name == "Is Cloud" && String.Equals((string)property.Value, "true", StringComparison.OrdinalIgnoreCase)))
                 .Select(item => item.Key).ToList();
 
             sCollision.AddCollisionFrom(map, tilesWithCollision);
@@ -40,8 +40,8 @@ namespace HandballWars.Entities.stage
 
         public void CheckCollision(PlatformInteracter character, float elasticity)
         {
-            character.CollideAgainst(() => sCollision.CollideAgainstSolid(character, elasticity), false);
-            character.CollideAgainst(() => cCollision.CollideAgainstSolid(character, elasticity), true);
+            character.CollideAgainst(() => sCollision.CollideAgainstSolid(character), false);
+            character.CollideAgainst(() => cCollision.CollideAgainstSolid(character), true);
         }
     }
 }

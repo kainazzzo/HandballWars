@@ -135,7 +135,7 @@ namespace HandballWars.Entities
                     Alpha = 1f,
                     AlphaRate = -DefaultSecondsToFade,
                     AnimationChain = Particles["Smoke"],
-                    ColorOperation = FlatRedBall.Graphics.ColorOperation.Modulate,
+                    ColorOperation = FlatRedBall.Graphics.ColorOperation.Add,
                     Drag = DefaultDrag,
                     ScaleY = DefaultMinScale,
                     ScaleYRange = DefaultMaxScale,

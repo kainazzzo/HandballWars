@@ -18,21 +18,18 @@
   <tile id="128">
     <properties>
       <property name="HasCollision (bool)" value="True" />
-      <property name="Is Cloud (bool)" value="false" />
       <property name="Name (string)" value="LeftGrassSolid" />
     </properties>
   </tile>
   <tile id="129">
     <properties>
       <property name="HasCollision (bool)" value="True" />
-      <property name="Is Cloud (bool)" value="false" />
       <property name="Name (string)" value="MiddleGrassSolid" />
     </properties>
   </tile>
   <tile id="130">
     <properties>
       <property name="HasCollision (bool)" value="True" />
-      <property name="Is Cloud (bool)" value="false" />
       <property name="Name (string)" value="RightGrassSolid" />
     </properties>
   </tile>
@@ -46,7 +43,7 @@
   <tile id="132">
     <properties>
       <property name="HasCollision (bool)" value="True" />
-      <property name="Is Cloud (bool)" value="true" />
+      <property name="Is Cloud (bool)" value="True" />
       <property name="Name (string)" value="LeftGrassCloud" />
     </properties>
   </tile>
@@ -67,43 +64,46 @@
   <tile id="136">
     <properties>
       <property name="HasCollision (bool)" value="True" />
-      <property name="Is Cloud (bool)" value="true" />
+      <property name="Name (string)" value="Unnamed11" />
     </properties>
   </tile>
   <tile id="137">
     <properties>
       <property name="HasCollision (bool)" value="True" />
-      <property name="Is Cloud (bool)" value="true" />
+      <property name="Name (string)" value="Unnamed13" />
     </properties>
   </tile>
   <tile id="138">
     <properties>
       <property name="HasCollision (bool)" value="True" />
-      <property name="Is Cloud (bool)" value="true" />
+      <property name="Name (string)" value="Unnamed12" />
     </properties>
   </tile>
   <tile id="139">
     <properties>
       <property name="HasCollision (bool)" value="True" />
-      <property name="Is Cloud (bool)" value="true" />
+      <property name="Name (string)" value="Unnamed18" />
     </properties>
   </tile>
   <tile id="140">
     <properties>
-      <property name="HasCollision (bool)" value="True" />
       <property name="Is Cloud (bool)" value="true" />
+      <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed23" />
     </properties>
   </tile>
   <tile id="141">
     <properties>
-      <property name="HasCollision (bool)" value="True" />
       <property name="Is Cloud (bool)" value="true" />
+      <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed22" />
     </properties>
   </tile>
   <tile id="142">
     <properties>
-      <property name="HasCollision (bool)" value="True" />
       <property name="Is Cloud (bool)" value="true" />
+      <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed24" />
     </properties>
   </tile>
   <tile id="256">
@@ -133,21 +133,25 @@
   <tile id="264">
     <properties>
       <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed10" />
     </properties>
   </tile>
   <tile id="265">
     <properties>
+      <property name="Name (string)" value="Unnamed9" />
       <property name="HasCollision (bool)" value="True" />
     </properties>
   </tile>
   <tile id="266">
     <properties>
       <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed14" />
     </properties>
   </tile>
   <tile id="267">
     <properties>
       <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed19" />
     </properties>
   </tile>
   <tile id="384">
@@ -177,21 +181,25 @@
   <tile id="392">
     <properties>
       <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed15" />
     </properties>
   </tile>
   <tile id="393">
     <properties>
       <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed16" />
     </properties>
   </tile>
   <tile id="394">
     <properties>
       <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed17" />
     </properties>
   </tile>
   <tile id="395">
     <properties>
       <property name="HasCollision (bool)" value="True" />
+      <property name="Name (string)" value="Unnamed20" />
     </properties>
   </tile>
   <tile id="513">
@@ -518,6 +526,21 @@
   <tile id="3">
     <properties>
       <property name="Name (string)" value="balltile" />
+    </properties>
+  </tile>
+  <tile id="269">
+    <properties />
+  </tile>
+  <tile id="15">
+    <properties>
+      <property name="Name (string)" value="Player1Start" />
+      <property name="EntityName (string)" value="Entities\PlatformCharacterBase" />
+    </properties>
+  </tile>
+  <tile id="271">
+    <properties>
+      <property name="Name (string)" value="Player2Start" />
+      <property name="EntityName (string)" value="Entities\PlatformerCharacterBase" />
     </properties>
   </tile>
 </tileset>

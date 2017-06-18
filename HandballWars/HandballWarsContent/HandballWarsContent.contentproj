@@ -145,6 +145,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>BasicArena</Name>
     </None>
+    <None Include="Screens\GameScreen\Performance\IEntityFactory.Generated.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>IEntityFactory.Generated</Name>
+    </None>
+    <None Include="Screens\GameScreen\Performance\PoolList.Generated.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>PoolList.Generated</Name>
+    </None>
     <None Include="Screens\GameScreen\platformertileset.tsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>platformertileset</Name>
