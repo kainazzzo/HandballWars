@@ -75,6 +75,8 @@ namespace HandballWars.Entities
         /// holds the jump button down.
         /// </summary>
         double mTimeJumpPushed = double.NegativeInfinity;
+
+        bool squishing = false;
         
         /// <summary>
         /// The MovementValues which were active when the user last jumped.
@@ -261,19 +263,36 @@ namespace HandballWars.Entities
         private void InitializeActions()
         {
             var maxheight = MainSprite.Height;
+            var relativeY = MainSprite.RelativeY;
             
 
             JumpAction = LandedAction = () => {
-                var tweener = new Tweener(maxheight / 5.0f, maxheight, .75f, InterpolationType.Bounce, Easing.Out)
+
+                if (!squishing)
                 {
-                    Owner = this
-                };
+                    squishing = true;
 
-                tweener.PositionChanged += height => MainSprite.Height = height;
+                    var tweener = new Tweener(maxheight / 5.0f, maxheight, .35f, InterpolationType.Bounce, Easing.Out)
+                    {
+                        Owner = this
+                    };
 
-                TweenerManager.Self.Add(tweener);
-                
-                tweener.Start();
+                    var tweener2 = new Tweener(relativeY - (maxheight / 2.0f), relativeY, .35f, InterpolationType.Bounce, Easing.Out)
+                    {
+                        Owner = this
+                    };
+
+                    tweener.PositionChanged += height => MainSprite.Height = height;
+                    tweener2.PositionChanged += relativey => MainSprite.RelativeY = relativey;
+
+                    TweenerManager.Self.Add(tweener);
+                    TweenerManager.Self.Add(tweener2);
+
+                    tweener.Start();
+                    tweener2.Start();
+
+                    tweener.Ended += () => squishing = false;
+                }
             };
         }
 
