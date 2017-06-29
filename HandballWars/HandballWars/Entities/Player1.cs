@@ -48,8 +48,6 @@ namespace HandballWars.Entities
         }
         private void CustomActivity()
 		{
-
-            FlatRedBall.Debugging.Debugger.Write(IsOnGround);
         }
 
 		private void CustomDestroy()

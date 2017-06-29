@@ -46,8 +46,7 @@ namespace HandballWars.Entities.stage
             {
                 character.CollideAgainst(() => cCollision.CollideAgainstSolid(character), true);
             }
-
-            if (!cCollision.CollideAgainst(character))
+            else if (!cCollision.CollideAgainst(character))
             {
                 character.IsFallingThroughClouds = false;
             }
