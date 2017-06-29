@@ -36,9 +36,7 @@ namespace HandballWars.Screens
 
             
 
-		    //Player1.X = 200;
-		    //Player1.Y = -100;
-
+		   
             var ball = BallFactory.CreateNew();
 
             ball.X = 400;
@@ -53,6 +51,7 @@ namespace HandballWars.Screens
 
 		void CustomActivity(bool firstTimeCalled)
 		{
+            
             HandleCamera();
             foreach (var BallInstance in BallList)
             {

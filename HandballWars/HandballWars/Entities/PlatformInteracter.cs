@@ -17,6 +17,7 @@ namespace HandballWars.Entities
         public double LastCollisionTime { get; set; }
         public bool IsOnGround { get; set; }
         public Action LandedAction { get; set; }
+        public bool IsFallingThroughClouds { get; set; }
 
         /// <summary>
         /// Initialization logic which is execute only one time for this Entity (unless the Entity is pooled).
@@ -122,7 +123,7 @@ namespace HandballWars.Entities
                         Position = positionBeforeCollision;
                         Velocity = velocityBeforeCollision;
                     }
-                }
+                }                
             }
         }
     }

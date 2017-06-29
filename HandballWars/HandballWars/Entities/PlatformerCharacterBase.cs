@@ -15,6 +15,7 @@ using GuiManager = FlatRedBall.Gui.GuiManager;
 using HandballWars.DataTypes;
 using FlatRedBall.Glue.StateInterpolation;
 using StateInterpolationPlugin;
+using FlatRedBall.Instructions;
 #if FRB_XNA || SILVERLIGHT
 using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
@@ -47,7 +48,7 @@ namespace HandballWars.Entities
 
     #endregion
 
-    public partial class PlatformerCharacterBase
+    public partial class PlatformerCharacterBase : IInstructable
     {
         #region Fields
         
@@ -157,6 +158,12 @@ namespace HandballWars.Entities
 			set;
 		}
 
+        public IPressableInput FallThroughInput
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// The input object which controls the horizontal movement of the character.
         /// Common examples include a d-pad, analog stick, or keyboard keys.
@@ -257,9 +264,10 @@ namespace HandballWars.Entities
             
 
             JumpAction = () => {
-                Tweener tweener = new Tweener(maxheight / 5.0f, maxheight, .75f, InterpolationType.Bounce, Easing.Out);
-                tweener.Owner = this;
-
+                var tweener = new Tweener(maxheight / 5.0f, maxheight, .75f, InterpolationType.Bounce, Easing.Out)
+                {
+                    Owner = this
+                };
 
                 tweener.PositionChanged += height => MainSprite.Height = height;
 
@@ -290,6 +298,7 @@ namespace HandballWars.Entities
                 this.JumpInput =
                     FlatRedBall.Input.InputManager.Keyboard.GetKey(Keys.Space);
                 HorizontalInput.Inputs.Add(FlatRedBall.Input.InputManager.Keyboard.Get1DInput(Keys.Left, Keys.Right));
+                FallThroughInput = InputManager.Keyboard.GetKey(Keys.Down);
             }
 
             InputEnabled = true;
@@ -332,6 +341,18 @@ namespace HandballWars.Entities
             ApplyHorizontalInput();
 
             ApplyJumpInput();
+
+            ApplyFallThroughInput();
+        }
+
+        private void ApplyFallThroughInput()
+        {
+            if (FallThroughInput.IsDown)
+            {
+                IsFallingThroughClouds = true;
+            }
+
+            
         }
 
         /// <summary>
