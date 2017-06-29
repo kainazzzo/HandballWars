@@ -77,6 +77,7 @@ namespace HandballWars.Screens
                 if (BallInstance.Held == null)
                 {
                     BallInstance.YAcceleration = BallGravity;
+                    
                     stage.CheckCollision(BallInstance, BallElasticity);
                 }
             }

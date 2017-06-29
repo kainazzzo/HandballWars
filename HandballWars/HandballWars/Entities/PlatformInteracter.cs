@@ -9,6 +9,7 @@ using FlatRedBall.Graphics.Animation;
 using FlatRedBall.Graphics.Particle;
 using FlatRedBall.Math.Geometry;
 using Microsoft.Xna.Framework;
+using FlatRedBall.TileCollisions;
 
 namespace HandballWars.Entities
 {
@@ -57,6 +58,27 @@ namespace HandballWars.Entities
             CollideAgainst(shapeCollection, elasticity, false);
         }
 
+        public void HandleCollision(TileShapeCollection solidCollision, TileShapeCollection cloudCollision)
+        {
+            var wasOnGround = IsOnGround;
+
+            CollideAgainst(() => solidCollision.CollideAgainstSolid(this), false);
+
+            if (!IsFallingThroughClouds)
+            {
+                CollideAgainst(() => cloudCollision.CollideAgainstSolid(this), true);
+            }
+            else if (!cloudCollision.CollideAgainst(this))
+            {
+                IsFallingThroughClouds = false;
+            }
+
+            if (!wasOnGround && IsOnGround && LandedAction != null)
+            {
+                LandedAction();
+            }
+        }
+
         /// <summary>
         /// Performs a solid or cloud collision against a ShapeCollection.
         /// </summary>
@@ -82,7 +104,9 @@ namespace HandballWars.Entities
 
             float lastY = this.Y;
 
-            bool isFirstCollisionOfTheFrame = TimeManager.CurrentTime != LastCollisionTime;
+            bool isFirstCollisionOfTheFrame = LastCollisionTime != TimeManager.CurrentTime;
+
+            var wasOnGround = IsOnGround;
 
             if (isFirstCollisionOfTheFrame)
             {
@@ -92,7 +116,6 @@ namespace HandballWars.Entities
 
             if (isCloudCollision == false || velocityBeforeCollision.Y < 0)
             {
-
                 if (collisionFunction())
                 {
                     // make sure that we've been moved up, and that we're falling
@@ -107,24 +130,20 @@ namespace HandballWars.Entities
 
                     if (shouldApplyCollision)
                     {
-
                         if (this.Y > lastY)
                         {
-                            if (!IsOnGround && LandedAction != null)
-                            {
-                                LandedAction();
-                            }
                             IsOnGround = true;
                         }
-                       
                     }
                     else
                     {
                         Position = positionBeforeCollision;
                         Velocity = velocityBeforeCollision;
                     }
-                }                
+                }
             }
+
+            
         }
     }
 }

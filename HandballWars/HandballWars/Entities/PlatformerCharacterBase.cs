@@ -263,7 +263,7 @@ namespace HandballWars.Entities
             var maxheight = MainSprite.Height;
             
 
-            JumpAction = () => {
+            JumpAction = LandedAction = () => {
                 var tweener = new Tweener(maxheight / 5.0f, maxheight, .75f, InterpolationType.Bounce, Easing.Out)
                 {
                     Owner = this
