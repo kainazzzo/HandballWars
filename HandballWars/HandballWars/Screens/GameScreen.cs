@@ -134,14 +134,6 @@ namespace HandballWars.Screens
 
             Camera.Main.Velocity = velocityToSet * CameraMovementCoefficient;
 
-            //Camera.Main.DestinationRectangle = new Rectangle((int)leftMost.X, (int)topMost.Y, (int)Math.Abs(rightMost.X - leftMost.X), (int)Math.Abs(topMost.Y - bottomMost.Y));
-
-            //cameraIndicator.Position = center;
-            //cameraIndicator.Position = new Vector3(GuiManager.Cursor.WorldXAt(0f), GuiManager.Cursor.WorldYAt(0f), 0f);
-            
-            //FlatRedBall.Debugging.Debugger.CommandLineWrite(center);
-            
-            FlatRedBall.Debugging.Debugger.Write($"OrthoWidth: {Camera.Main.OrthogonalWidth}  OrthoHeight: {Camera.Main.OrthogonalHeight}");
 
             var width = Math.Abs((rightMost.X + 16f) - (leftMost.X - 16f));
             var height = Math.Abs((topMost.Y + 16f) - (bottomMost.Y - 16f));
