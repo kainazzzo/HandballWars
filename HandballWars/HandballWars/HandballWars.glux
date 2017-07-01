@@ -48,6 +48,39 @@
           <Type>float</Type>
           <DefaultValue xsi:type="xsd:float">0.5</DefaultValue>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>CameraMovementCoefficient</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">5</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>MinCameraHeight</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">300</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>MinCameraWidth</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">540</DefaultValue>
+        </CustomVariable>
       </CustomVariables>
       <Name>Screens\GameScreen</Name>
       <ReferencedFiles>

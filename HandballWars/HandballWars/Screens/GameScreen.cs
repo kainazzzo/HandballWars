@@ -129,7 +129,11 @@ namespace HandballWars.Screens
 
             //var center = new Vector3((rightMost.X + leftMost.X) / 2.0f, -300, 0);
 
-            Camera.Main.Position = center;
+            Vector3 velocityToSet = center - Camera.Main.Position;
+            velocityToSet.Z = 0;
+
+            Camera.Main.Velocity = velocityToSet * CameraMovementCoefficient;
+
             //Camera.Main.DestinationRectangle = new Rectangle((int)leftMost.X, (int)topMost.Y, (int)Math.Abs(rightMost.X - leftMost.X), (int)Math.Abs(topMost.Y - bottomMost.Y));
 
             //cameraIndicator.Position = center;
@@ -142,24 +146,13 @@ namespace HandballWars.Screens
             var width = Math.Abs((rightMost.X + 16f) - (leftMost.X - 16f));
             var height = Math.Abs((topMost.Y + 16f) - (bottomMost.Y - 16f));
 
-            Camera.Main.OrthogonalWidth = width;
-            Camera.Main.OrthogonalHeight = width / 16 * 9;
+            Camera.Main.OrthogonalWidth = Math.Max(width, MinCameraWidth);
+            Camera.Main.OrthogonalHeight = Camera.Main.OrthogonalWidth / 16 * 9;
             
-            if (Camera.Main.OrthogonalHeight < height)
+            if (Camera.Main.OrthogonalHeight < height || Camera.Main.OrthogonalHeight < MinCameraHeight)
             {
-                Camera.Main.OrthogonalHeight = height;
-                Camera.Main.OrthogonalWidth = height / 9 * 16;
-            }
-
-            if (InputManager.Keyboard.KeyPushed(Microsoft.Xna.Framework.Input.Keys.Up))
-            {
-                Camera.Main.OrthogonalHeight *= 2f;
-                Camera.Main.OrthogonalWidth *= 2f;
-            }
-            if (InputManager.Keyboard.KeyPushed(Microsoft.Xna.Framework.Input.Keys.Down))
-            {
-                Camera.Main.OrthogonalHeight *= .5f;
-                Camera.Main.OrthogonalWidth *= .5f;
+                Camera.Main.OrthogonalHeight = Math.Max(height, MinCameraHeight);
+                Camera.Main.OrthogonalWidth = Camera.Main.OrthogonalHeight / 9 * 16;
             }
         }
 
