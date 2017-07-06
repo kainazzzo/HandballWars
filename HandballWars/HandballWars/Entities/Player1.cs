@@ -51,6 +51,7 @@ namespace HandballWars.Entities
             horizontalInput.Inputs.Add(InputManager.Keyboard.Get1DInput(Keys.A, Keys.D));
             fallThroughInput.Inputs.Add(InputManager.Keyboard.GetKey(Keys.S));
             throwTrajectoryInput.Inputs.Add(InputManager.Keyboard.Get2DInput(Keys.J, Keys.L, Keys.I, Keys.K));
+            throwInput.Inputs.Add(InputManager.Keyboard.GetKey(Keys.E));
 
             InputEnabled = true;
         }

@@ -299,7 +299,7 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>Radius</Member>
-            <ValueAsFloat>64</ValueAsFloat>
+            <ValueAsFloat>50</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>bool</Type>
@@ -833,7 +833,6 @@
           <Name>ThrowSpeed</Name>
           <Type>float</Type>
           <DefaultValue xsi:type="xsd:float">500</DefaultValue>
-          <IsShared>true</IsShared>
         </CustomVariable>
       </CustomVariables>
       <BaseEntity>Entities\PlatformInteracter</BaseEntity>

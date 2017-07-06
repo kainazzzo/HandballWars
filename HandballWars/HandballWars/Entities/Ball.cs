@@ -34,6 +34,7 @@ namespace HandballWars.Entities
 
 		private void CustomActivity()
 		{
+
             ParticleGeneratorInstance.CreateRingAt(Position, new Color(0, 101, 135), ParticleEffectSize.Medium);
             
             if (this.Held != null)
@@ -41,10 +42,19 @@ namespace HandballWars.Entities
                 var distance = this.Held.Position - this.Position;
 
                 this.Acceleration = distance;
-                Acceleration.X += Held.DirectionFacing == HorizontalDirection.Right ? 8f : -8f;
+                var trajectoryX = this.Held.ThrowTrajectoryInput.X;
+                var trajectoryY = this.Held.ThrowTrajectoryInput.Y;
+                Acceleration.X += trajectoryX * 32f;
+                Acceleration.Y += trajectoryY * 32f;
+                
 
                 this.Acceleration *= HeldAccelerationSpeed;
                 this.Drag = HeldDrag;
+            }
+            else
+            {
+                this.Acceleration = new Vector3(0, -1000f, 0);
+                this.Drag = 0f;
             }
         }
 

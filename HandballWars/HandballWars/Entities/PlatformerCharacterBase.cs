@@ -7,6 +7,7 @@ using FlatRedBall.Glue.StateInterpolation;
 using StateInterpolationPlugin;
 using FlatRedBall.Instructions;
 using FlatRedBall.Screens;
+using Microsoft.Xna.Framework;
 
 namespace HandballWars.Entities
 {
@@ -231,6 +232,7 @@ namespace HandballWars.Entities
             get;
             set;
         }
+        public Ball BallHeld { get; set; }
 
         #endregion
 
@@ -285,6 +287,8 @@ namespace HandballWars.Entities
                     tweener.Ended += () => squishing = false;
                 }
             };
+            
+            
         }
 
         /// <summary>
@@ -334,6 +338,21 @@ namespace HandballWars.Entities
             ApplyJumpInput();
 
             ApplyFallThroughInput();
+
+            ApplyThrowInput();
+        }
+
+        private void ApplyThrowInput()
+        {
+            if (this.ThrowInput.WasJustPressed && this.BallHeld != null)
+            {
+                this.BallHeld.Velocity = new Vector3(ThrowTrajectoryInput.X, ThrowTrajectoryInput.Y, 0);
+                this.BallHeld.Velocity *= this.ThrowSpeed;
+                
+                
+                this.BallHeld.Held = null;
+                this.BallHeld = null;
+            }
         }
 
         private void ApplyFallThroughInput()

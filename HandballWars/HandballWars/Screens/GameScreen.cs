@@ -60,6 +60,7 @@ namespace HandballWars.Screens
                         if (BallInstance.Held == null && player.CollideAgainst(BallInstance.SecuredCircleInstance))
                         {
                             BallInstance.Held = player;
+                            player.BallHeld = BallInstance;
                             BallInstance.YAcceleration = 0;
                         }
                     }
@@ -70,6 +71,7 @@ namespace HandballWars.Screens
                     if (BallInstance.Held == player && !player.CollideAgainst(BallInstance.DropCircleInstance))
                     {
                         BallInstance.Held = null;
+                        player.BallHeld = null;
                     }
                 }
 
