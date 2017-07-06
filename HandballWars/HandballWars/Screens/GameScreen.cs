@@ -51,7 +51,6 @@ namespace HandballWars.Screens
 
 		void CustomActivity(bool firstTimeCalled)
 		{
-            
             HandleCamera();
             foreach (var BallInstance in BallList)
             {
@@ -135,8 +134,8 @@ namespace HandballWars.Screens
             Camera.Main.Velocity = velocityToSet * CameraMovementCoefficient;
 
 
-            var width = Math.Abs((rightMost.X + 16f) - (leftMost.X - 16f));
-            var height = Math.Abs((topMost.Y + 16f) - (bottomMost.Y - 16f));
+            var width = Math.Abs((rightMost.X + 64f) - (leftMost.X - 64f));
+            var height = Math.Abs((topMost.Y + 64f) - (bottomMost.Y - 64f));
 
             Camera.Main.OrthogonalWidth = Math.Max(width, MinCameraWidth);
             Camera.Main.OrthogonalHeight = Camera.Main.OrthogonalWidth / 16 * 9;

@@ -68,7 +68,7 @@
           </Properties>
           <Name>MinCameraHeight</Name>
           <Type>float</Type>
-          <DefaultValue xsi:type="xsd:float">300</DefaultValue>
+          <DefaultValue xsi:type="xsd:float">250</DefaultValue>
         </CustomVariable>
         <CustomVariable>
           <Properties>
@@ -79,7 +79,7 @@
           </Properties>
           <Name>MinCameraWidth</Name>
           <Type>float</Type>
-          <DefaultValue xsi:type="xsd:float">540</DefaultValue>
+          <DefaultValue xsi:type="xsd:float">300</DefaultValue>
         </CustomVariable>
       </CustomVariables>
       <Name>Screens\GameScreen</Name>
@@ -823,6 +823,18 @@
           <Type>Animation</Type>
           <SetByDerived>true</SetByDerived>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>ThrowSpeed</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">500</DefaultValue>
+          <IsShared>true</IsShared>
+        </CustomVariable>
       </CustomVariables>
       <BaseEntity>Entities\PlatformInteracter</BaseEntity>
       <ImplementsIDrawableBatch>false</ImplementsIDrawableBatch>
@@ -972,7 +984,6 @@
           <ProjectsToExcludeFrom />
         </ReferencedFileSave>
       </ReferencedFiles>
-      <CreatedByOtherEntities>true</CreatedByOtherEntities>
       <Events>
         <EventResponseSave>
           <EventName>AfterGroundMovementSet</EventName>

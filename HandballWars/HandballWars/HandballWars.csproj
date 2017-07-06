@@ -151,7 +151,6 @@
     </Compile>
     <Compile Include="Entities\stage\Stage.cs" />
     <Compile Include="Factories\BallFactory.Generated.cs" />
-    <Compile Include="Factories\PlatformerCharacterBaseFactory.Generated.cs" />
     <Compile Include="Factories\Player1Factory.Generated.cs" />
     <Compile Include="Factories\Player2Factory.Generated.cs" />
     <Compile Include="GlobalContent.Generated.cs" />

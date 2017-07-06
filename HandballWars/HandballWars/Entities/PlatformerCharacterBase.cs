@@ -1,33 +1,12 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using FlatRedBall;
 using FlatRedBall.Input;
-using FlatRedBall.AI.Pathfinding;
 using FlatRedBall.Graphics.Animation;
-using FlatRedBall.Graphics.Particle;
-
-using FlatRedBall.Math.Geometry;
-using FlatRedBall.Math.Splines;
-using BitmapFont = FlatRedBall.Graphics.BitmapFont;
-using Cursor = FlatRedBall.Gui.Cursor;
-using GuiManager = FlatRedBall.Gui.GuiManager;
 using HandballWars.DataTypes;
 using FlatRedBall.Glue.StateInterpolation;
 using StateInterpolationPlugin;
 using FlatRedBall.Instructions;
-#if FRB_XNA || SILVERLIGHT
-using Keys = Microsoft.Xna.Framework.Input.Keys;
-using Vector3 = Microsoft.Xna.Framework.Vector3;
-using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 using FlatRedBall.Screens;
-#elif FRB_MDX
-using Keys = Microsoft.DirectX.DirectInput.Key;
-
-
-#endif
-
-
 
 namespace HandballWars.Entities
 {
@@ -48,7 +27,7 @@ namespace HandballWars.Entities
 
     #endregion
 
-    public partial class PlatformerCharacterBase : IInstructable
+    public abstract partial class PlatformerCharacterBase : IInstructable
     {
         #region Fields
         
@@ -170,7 +149,19 @@ namespace HandballWars.Entities
         /// The input object which controls the horizontal movement of the character.
         /// Common examples include a d-pad, analog stick, or keyboard keys.
         /// </summary>
-        public FlatRedBall.Input.Multiple1DInputs HorizontalInput
+        public FlatRedBall.Input.I1DInput HorizontalInput
+        {
+            get;
+            set;
+        }
+
+        public I2DInput ThrowTrajectoryInput
+        {
+            get;
+            set;
+        }
+
+        public IPressableInput ThrowInput
         {
             get;
             set;
@@ -301,27 +292,8 @@ namespace HandballWars.Entities
         /// Xbox360GamePad index 0. This can be overridden by base classes to default
         /// to different input devices.
         /// </summary>
-        protected virtual void InitializeInput()
-        {
-            this.HorizontalInput = new Multiple1DInputs();
-            if (FlatRedBall.Input.InputManager.Xbox360GamePads[0].IsConnected)
-            {
-                this.JumpInput =
-                    FlatRedBall.Input.InputManager.Xbox360GamePads[0].GetButton(FlatRedBall.Input.Xbox360GamePad.Button.A);
-
-                HorizontalInput.Inputs.Add(FlatRedBall.Input.InputManager.Xbox360GamePads[0].LeftStick.Horizontal);
-                HorizontalInput.Inputs.Add(FlatRedBall.Input.InputManager.Xbox360GamePads[0].DPadHorizontal);
-            }
-            else
-            {
-                this.JumpInput =
-                    FlatRedBall.Input.InputManager.Keyboard.GetKey(Keys.Space);
-                HorizontalInput.Inputs.Add(FlatRedBall.Input.InputManager.Keyboard.Get1DInput(Keys.Left, Keys.Right));
-                FallThroughInput = InputManager.Keyboard.GetKey(Keys.Down);
-            }
-
-            InputEnabled = true;
-        }
+        protected abstract void InitializeInput();
+        
 
 		private void CustomActivity()
 		{

@@ -27,22 +27,31 @@ namespace HandballWars.Entities
 
         protected override void InitializeInput()
         {
-            this.HorizontalInput = new Multiple1DInputs();
-            if (FlatRedBall.Input.InputManager.Xbox360GamePads[0].IsConnected)
-            {
-                this.JumpInput =
-                    FlatRedBall.Input.InputManager.Xbox360GamePads[1].GetButton(FlatRedBall.Input.Xbox360GamePad.Button.A);
+            var horizontalInput = new Multiple1DInputs();
+            var throwTrajectoryInput = new Multiple2DInputs();
+            var throwInput = new MultiplePressableInputs();
+            var jumpInput = new MultiplePressableInputs();
+            var fallThroughInput = new MultiplePressableInputs();
 
-                HorizontalInput.Inputs.Add(FlatRedBall.Input.InputManager.Xbox360GamePads[1].LeftStick.Horizontal);
-                HorizontalInput.Inputs.Add(FlatRedBall.Input.InputManager.Xbox360GamePads[1].DPadHorizontal);
-            }
-            else
+            this.HorizontalInput = horizontalInput;
+            this.ThrowTrajectoryInput = throwTrajectoryInput;
+            this.ThrowInput = throwInput;
+            this.JumpInput = jumpInput;
+            this.FallThroughInput = fallThroughInput;
+
+            if (InputManager.Xbox360GamePads[0].IsConnected)
             {
-                this.JumpInput =
-                    FlatRedBall.Input.InputManager.Keyboard.GetKey(Keys.W);
-                HorizontalInput.Inputs.Add(FlatRedBall.Input.InputManager.Keyboard.Get1DInput(Keys.A, Keys.D));
-                FallThroughInput = InputManager.Keyboard.GetKey(Keys.S);
+                jumpInput.Inputs.Add(InputManager.Xbox360GamePads[0].GetButton(FlatRedBall.Input.Xbox360GamePad.Button.A));
+                horizontalInput.Inputs.Add(InputManager.Xbox360GamePads[0].LeftStick.Horizontal);
+                horizontalInput.Inputs.Add(InputManager.Xbox360GamePads[0].DPadHorizontal);
+                fallThroughInput.Inputs.Add(InputManager.Xbox360GamePads[0].GetButton(Xbox360GamePad.Button.DPadDown));
             }
+
+            jumpInput.Inputs.Add(InputManager.Keyboard.GetKey(Keys.Up));
+            horizontalInput.Inputs.Add(InputManager.Keyboard.Get1DInput(Keys.Left, Keys.Right));
+            fallThroughInput.Inputs.Add(InputManager.Keyboard.GetKey(Keys.Down));
+            throwTrajectoryInput.Inputs.Add(InputManager.Keyboard.Get2DInput(Keys.F, Keys.H, Keys.T, Keys.G));
+            
 
             InputEnabled = true;
         }
